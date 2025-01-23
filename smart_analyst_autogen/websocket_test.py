@@ -265,7 +265,7 @@ async def run_websocket_server(app):
 
 app = FastAPI(lifespan=run_websocket_server)
 
-app.mount("~/Development/HDFC/smart-analyst-autogen/static", StaticFiles(directory="static"), name="static")
+#app.mount("~/Development/HDFC/smart-analyst-autogen/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 async def get():
