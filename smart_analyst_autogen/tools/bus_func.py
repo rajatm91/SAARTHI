@@ -119,7 +119,7 @@ def plot_pie_chart(group_by: Annotated[Literal["description", "month"],
         spend_data = df[df["transaction_amount"] > 0].groupby("month")["transaction_amount"].sum()
         title = "Spend by Month"
     random_name = uuid.uuid4()
-    file_name = os.path.join("/Users/rajatmishra/downloads/images/", f"{random_name}.png")
+    file_name = os.path.join("/Users/rajatmishra/Development/HDFC/smart-analyst-autogen/static", f"{random_name}.png")
     plt.figure(figsize=(8, 8))
     plt.pie(spend_data, labels=spend_data.index, autopct='%1.1f%%', startangle=140)
     plt.title(title)

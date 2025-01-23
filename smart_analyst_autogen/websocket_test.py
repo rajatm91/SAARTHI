@@ -8,6 +8,7 @@ from autogen.io import IOWebsockets
 from fastapi import FastAPI
 from starlette.responses import HTMLResponse
 from starlette.staticfiles import StaticFiles
+from starlette.websockets import WebSocket
 
 from smart_analyst_autogen.main import on_connect
 
@@ -264,11 +265,23 @@ async def run_websocket_server(app):
 
 app = FastAPI(lifespan=run_websocket_server)
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("~/Development/HDFC/smart-analyst-autogen/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 async def get():
-    return HTMLResponse(html)
+    return { "name": "SAARTHI: Smart AI Agent for Real-Time Handling & Insights" }
+
+
+
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    while True:
+        data = await websocket.receive_text()
+        # Handle the received message
+        print(f"Received message: {data}")
+        # You can send a response back if needed
+        await websocket.send_text(f"Message text was: {data}")
 
 
 async def main():
