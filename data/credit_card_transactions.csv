@@ -1,0 +1,1001 @@
+transaction_date,description,reward_points,transaction_amount
+2024-12-08,Grocery Store,61,212.72
+2024-10-28,Refund,-26,-172.67
+2024-02-18,Refund,-46,-51.14
+2024-03-29,Gas Station,61,111.93
+2024-12-01,Restaurant,85,397.92
+2024-02-11,Electronics Store,66,99.44
+2024-05-13,Refund,-19,-185.48
+2024-05-08,Utility Bill Payment,70,74.6
+2024-09-28,Gas Station,6,291.52
+2024-12-04,Subscription Service,70,223.78
+2024-05-11,Clothing Store,17,305.98
+2024-09-12,Refund,-14,-162.48
+2024-10-21,Travel Booking,19,20.69
+2024-03-28,Clothing Store,23,133.15
+2024-07-24,Grocery Store,55,82.9
+2024-06-01,Online Shopping,61,267.21
+2024-09-15,Grocery Store,66,477.03
+2024-12-06,Travel Booking,29,363.09
+2025-01-03,Clothing Store,47,370.73
+2024-03-22,Travel Booking,23,296.08
+2024-06-10,Refund,-45,-84.1
+2024-06-11,Utility Bill Payment,13,471.64
+2024-09-18,Clothing Store,74,222.03
+2024-07-14,Electronics Store,100,233.15
+2024-09-23,Gas Station,8,223.75
+2024-10-14,Subscription Service,51,128.61
+2024-08-22,Restaurant,10,344.99
+2024-02-09,Restaurant,88,147.11
+2024-07-28,Online Shopping,19,28.3
+2024-08-07,Refund,-12,-69.99
+2024-11-30,Restaurant,13,434.97
+2024-12-08,Clothing Store,99,158.49
+2024-12-27,Electronics Store,13,26.86
+2024-12-05,Subscription Service,80,357.33
+2024-07-31,Travel Booking,89,318.27
+2024-04-21,Refund,-16,-22.43
+2024-12-23,Electronics Store,80,436.7
+2024-02-27,Gas Station,93,380.04
+2024-07-13,Grocery Store,74,392.29
+2024-08-03,Grocery Store,42,374.79
+2024-02-15,Restaurant,57,480.29
+2024-05-10,Travel Booking,66,274.26
+2024-10-15,Clothing Store,100,180.3
+2024-09-24,Subscription Service,74,142.83
+2024-03-25,Restaurant,40,16.36
+2024-11-07,Grocery Store,62,338.71
+2024-07-25,Subscription Service,42,443.35
+2024-09-14,Subscription Service,33,360.87
+2024-12-26,Gas Station,60,465.22
+2024-03-05,Refund,-35,-173.77
+2024-05-05,Refund,-28,-155.37
+2024-06-29,Travel Booking,71,319.29
+2024-06-17,Grocery Store,86,69.78
+2024-08-19,Travel Booking,30,448.35
+2024-12-18,Grocery Store,88,36.26
+2024-06-05,Grocery Store,18,115.5
+2024-01-23,Clothing Store,50,337.9
+2024-12-07,Gas Station,40,328.01
+2024-11-25,Gas Station,80,422.47
+2024-03-06,Online Shopping,23,211.89
+2024-08-07,Electronics Store,11,15.44
+2024-11-23,Gas Station,82,266.68
+2024-11-05,Travel Booking,99,123.76
+2024-08-14,Refund,-39,-152.15
+2024-10-19,Utility Bill Payment,7,247.56
+2024-06-07,Online Shopping,95,377.36
+2024-03-24,Refund,-38,-88.54
+2024-10-09,Grocery Store,69,17.81
+2024-12-31,Gas Station,85,362.35
+2024-04-11,Subscription Service,6,55.38
+2024-09-10,Clothing Store,53,380.2
+2024-09-17,Travel Booking,67,337.05
+2024-04-22,Grocery Store,69,176.67
+2024-02-26,Gas Station,31,479.16
+2024-02-25,Utility Bill Payment,64,353.23
+2024-06-01,Online Shopping,96,232.07
+2024-09-17,Electronics Store,32,34.35
+2024-09-15,Travel Booking,78,192.62
+2024-12-19,Electronics Store,13,485.65
+2024-10-09,Electronics Store,76,337.21
+2024-11-16,Electronics Store,99,272.05
+2024-02-15,Refund,-12,-12.36
+2024-04-17,Clothing Store,31,183.24
+2024-09-01,Grocery Store,90,270.61
+2024-02-03,Electronics Store,83,372.28
+2024-07-22,Gas Station,32,410.07
+2024-09-27,Electronics Store,32,41.14
+2024-05-03,Travel Booking,59,47.2
+2024-03-19,Grocery Store,91,102.04
+2024-07-05,Electronics Store,62,488.21
+2024-01-23,Utility Bill Payment,9,142.74
+2024-08-21,Gas Station,48,382.6
+2024-10-30,Refund,-46,-104.52
+2024-12-13,Subscription Service,10,197.59
+2024-09-12,Gas Station,92,43.16
+2024-05-25,Gas Station,88,157.45
+2024-01-21,Clothing Store,39,228.71
+2024-08-19,Utility Bill Payment,41,335.78
+2024-10-06,Grocery Store,81,479.56
+2024-09-10,Subscription Service,99,95.74
+2024-06-07,Travel Booking,41,230.52
+2024-03-27,Subscription Service,64,287.39
+2024-12-15,Travel Booking,29,69.07
+2024-01-15,Travel Booking,49,268.34
+2024-10-03,Clothing Store,18,359.43
+2024-02-18,Subscription Service,9,370.5
+2024-09-22,Online Shopping,26,258.28
+2024-02-25,Gas Station,52,404.25
+2024-06-12,Clothing Store,77,208.19
+2024-10-07,Clothing Store,46,39.66
+2024-07-25,Refund,-27,-94.5
+2024-05-17,Restaurant,22,387.91
+2024-05-22,Restaurant,60,381.26
+2024-08-07,Travel Booking,81,60.74
+2024-12-29,Electronics Store,33,141.16
+2024-05-11,Utility Bill Payment,97,131.59
+2024-05-14,Grocery Store,25,443.7
+2024-04-01,Refund,-25,-101.89
+2025-01-07,Online Shopping,32,40.32
+2024-08-29,Electronics Store,20,61.95
+2024-10-14,Travel Booking,19,35.22
+2024-07-21,Travel Booking,91,321.39
+2024-11-29,Restaurant,8,407.16
+2024-09-24,Clothing Store,49,198.72
+2024-01-17,Electronics Store,87,426.1
+2024-08-24,Electronics Store,74,414.87
+2024-10-17,Grocery Store,57,327.68
+2024-08-01,Restaurant,25,365.38
+2024-09-28,Online Shopping,36,125.86
+2024-12-19,Refund,-23,-159.81
+2024-03-19,Travel Booking,58,453.57
+2024-02-22,Refund,-9,-30.7
+2024-06-09,Restaurant,85,389.58
+2024-03-15,Refund,-30,-134.14
+2024-07-30,Gas Station,84,495.32
+2024-05-05,Gas Station,37,10.86
+2024-02-09,Electronics Store,95,61.15
+2024-04-26,Online Shopping,21,157.87
+2024-12-13,Restaurant,69,232.39
+2024-01-30,Subscription Service,72,339.23
+2024-10-18,Restaurant,40,418.75
+2024-03-16,Subscription Service,79,82.92
+2024-01-29,Grocery Store,39,175.27
+2024-05-11,Restaurant,22,352.96
+2025-01-02,Refund,-40,-139.7
+2024-10-26,Grocery Store,5,276.34
+2024-04-15,Subscription Service,38,458.18
+2024-08-21,Utility Bill Payment,23,272.24
+2024-07-02,Gas Station,67,253.04
+2024-03-17,Travel Booking,10,88.9
+2024-03-09,Travel Booking,66,46.1
+2024-07-03,Gas Station,19,400.92
+2024-03-02,Refund,-7,-160.76
+2025-01-05,Online Shopping,16,403.79
+2024-07-31,Electronics Store,45,415.31
+2024-11-17,Grocery Store,60,228.95
+2024-06-12,Refund,-31,-107.91
+2025-01-09,Travel Booking,35,154.78
+2024-05-31,Gas Station,43,388.54
+2024-12-19,Clothing Store,11,133.47
+2024-04-27,Clothing Store,6,164.27
+2024-09-15,Restaurant,93,266.22
+2024-12-31,Subscription Service,71,232.46
+2024-11-21,Grocery Store,62,57.77
+2024-12-18,Restaurant,28,328.6
+2024-07-30,Utility Bill Payment,11,151.66
+2025-01-01,Refund,-49,-26.62
+2024-11-19,Subscription Service,36,155.86
+2024-07-08,Travel Booking,62,360.45
+2024-12-04,Grocery Store,44,232.69
+2024-02-11,Online Shopping,70,396.18
+2024-03-08,Electronics Store,8,141.32
+2024-10-30,Travel Booking,24,150.01
+2024-02-25,Restaurant,25,48.6
+2024-04-01,Electronics Store,30,212.0
+2024-01-27,Subscription Service,91,481.5
+2024-09-30,Grocery Store,79,267.0
+2024-07-07,Grocery Store,35,484.01
+2024-09-04,Refund,-5,-90.88
+2024-12-11,Grocery Store,65,437.21
+2024-05-15,Gas Station,80,386.29
+2024-08-17,Refund,-45,-76.93
+2024-06-21,Online Shopping,9,41.91
+2025-01-01,Utility Bill Payment,45,222.68
+2024-12-06,Utility Bill Payment,10,218.19
+2024-08-30,Online Shopping,75,173.33
+2024-03-05,Refund,-15,-156.82
+2024-09-18,Grocery Store,59,212.86
+2024-06-01,Utility Bill Payment,42,379.7
+2024-10-31,Travel Booking,70,317.48
+2024-05-08,Refund,-42,-179.24
+2024-01-10,Restaurant,53,342.79
+2024-10-17,Refund,-48,-140.9
+2024-03-26,Electronics Store,94,202.23
+2024-11-25,Gas Station,86,52.15
+2024-06-07,Travel Booking,85,390.88
+2024-10-15,Utility Bill Payment,23,424.07
+2024-09-13,Gas Station,52,66.68
+2024-11-04,Grocery Store,27,257.3
+2024-08-19,Restaurant,29,280.78
+2024-10-23,Gas Station,75,66.88
+2024-03-04,Refund,-43,-105.58
+2024-09-30,Refund,-7,-96.16
+2024-05-08,Electronics Store,11,228.85
+2024-08-05,Subscription Service,40,187.69
+2024-11-09,Refund,-23,-170.55
+2024-02-28,Travel Booking,18,249.37
+2024-01-30,Electronics Store,44,55.55
+2024-07-05,Gas Station,14,103.53
+2024-08-15,Online Shopping,70,449.03
+2024-03-25,Online Shopping,49,50.96
+2024-06-07,Restaurant,47,106.62
+2024-09-21,Online Shopping,52,481.94
+2024-06-30,Grocery Store,15,385.57
+2024-10-25,Clothing Store,64,273.2
+2024-01-14,Gas Station,76,95.86
+2024-10-20,Electronics Store,90,461.42
+2024-10-19,Clothing Store,47,419.82
+2024-11-23,Refund,-35,-18.11
+2024-10-08,Online Shopping,78,219.73
+2024-04-25,Restaurant,57,354.16
+2024-11-24,Clothing Store,86,419.25
+2024-02-16,Electronics Store,51,89.53
+2024-11-13,Grocery Store,75,199.21
+2024-08-24,Clothing Store,91,392.98
+2024-05-24,Restaurant,60,241.87
+2024-09-22,Restaurant,99,472.92
+2024-09-25,Restaurant,82,430.95
+2024-09-10,Clothing Store,41,446.69
+2024-06-14,Electronics Store,60,338.48
+2024-05-19,Electronics Store,39,376.3
+2025-01-03,Electronics Store,95,439.39
+2024-06-14,Gas Station,15,321.78
+2024-04-13,Clothing Store,87,106.76
+2024-12-29,Refund,-44,-95.56
+2024-03-03,Electronics Store,90,260.85
+2024-08-04,Travel Booking,41,200.78
+2024-06-04,Subscription Service,74,291.87
+2024-04-17,Restaurant,67,387.81
+2024-09-12,Grocery Store,71,209.88
+2024-11-24,Electronics Store,85,349.71
+2024-07-02,Electronics Store,49,156.78
+2024-04-07,Grocery Store,71,272.18
+2024-06-11,Gas Station,14,133.61
+2024-07-25,Electronics Store,7,437.15
+2024-07-11,Subscription Service,79,485.1
+2024-03-16,Gas Station,68,333.21
+2024-01-25,Gas Station,47,70.47
+2024-10-29,Travel Booking,91,435.97
+2024-06-17,Subscription Service,87,399.51
+2024-03-01,Refund,-12,-56.46
+2024-02-16,Gas Station,46,365.68
+2024-10-05,Subscription Service,96,400.2
+2024-10-05,Utility Bill Payment,11,116.39
+2024-09-30,Electronics Store,14,234.79
+2024-03-23,Online Shopping,5,135.37
+2024-02-25,Subscription Service,49,16.34
+2024-05-20,Online Shopping,89,349.08
+2024-05-22,Gas Station,87,70.74
+2024-06-04,Electronics Store,92,454.22
+2024-12-29,Subscription Service,37,146.99
+2024-12-22,Restaurant,27,439.99
+2024-09-17,Restaurant,40,57.52
+2024-02-19,Online Shopping,38,250.46
+2024-12-06,Gas Station,95,387.75
+2024-04-21,Gas Station,24,337.78
+2024-05-25,Utility Bill Payment,23,191.38
+2024-10-18,Electronics Store,30,217.79
+2024-08-16,Subscription Service,31,323.12
+2024-03-28,Utility Bill Payment,56,383.13
+2024-10-28,Electronics Store,29,262.66
+2024-10-12,Travel Booking,53,308.35
+2024-03-07,Grocery Store,57,165.78
+2025-01-05,Grocery Store,22,377.41
+2024-12-21,Clothing Store,77,191.48
+2024-12-25,Online Shopping,27,489.79
+2024-08-21,Restaurant,82,191.97
+2024-11-14,Restaurant,57,454.63
+2024-08-02,Subscription Service,93,340.68
+2024-02-02,Travel Booking,60,239.65
+2024-11-16,Travel Booking,57,78.07
+2024-02-19,Travel Booking,51,185.26
+2024-11-01,Online Shopping,92,351.62
+2024-11-08,Subscription Service,58,418.98
+2024-09-08,Refund,-43,-67.34
+2024-11-30,Subscription Service,97,216.05
+2024-11-28,Travel Booking,57,172.89
+2024-12-06,Restaurant,87,483.98
+2024-06-22,Restaurant,90,167.88
+2024-10-15,Restaurant,96,113.63
+2024-06-19,Subscription Service,52,70.2
+2024-02-03,Electronics Store,93,316.79
+2024-07-17,Clothing Store,91,288.76
+2024-03-26,Gas Station,62,222.07
+2024-07-17,Travel Booking,97,365.41
+2024-03-11,Subscription Service,39,48.95
+2024-04-16,Subscription Service,91,331.86
+2024-01-20,Travel Booking,9,345.99
+2024-11-06,Electronics Store,7,223.11
+2024-11-05,Electronics Store,51,423.34
+2024-06-01,Electronics Store,11,484.42
+2024-08-07,Online Shopping,99,312.54
+2024-05-12,Restaurant,40,360.81
+2024-12-08,Subscription Service,52,381.77
+2024-04-09,Electronics Store,10,462.31
+2024-02-26,Subscription Service,67,93.89
+2024-07-06,Refund,-50,-194.95
+2024-10-02,Grocery Store,7,349.95
+2024-09-18,Gas Station,53,224.01
+2024-07-10,Gas Station,84,263.66
+2024-09-03,Subscription Service,71,61.37
+2024-06-03,Electronics Store,20,433.57
+2024-07-25,Online Shopping,48,22.7
+2024-08-18,Utility Bill Payment,80,360.27
+2024-06-07,Online Shopping,49,283.41
+2024-03-10,Grocery Store,29,401.37
+2024-03-21,Clothing Store,47,421.29
+2024-12-02,Online Shopping,72,218.75
+2024-02-04,Gas Station,100,201.03
+2024-07-22,Grocery Store,95,230.82
+2024-10-29,Electronics Store,39,468.36
+2024-08-23,Grocery Store,98,356.0
+2024-04-25,Restaurant,50,380.72
+2024-11-08,Utility Bill Payment,59,101.23
+2024-05-30,Restaurant,54,301.99
+2024-08-20,Travel Booking,14,228.49
+2024-02-23,Electronics Store,93,110.65
+2024-07-31,Travel Booking,53,385.1
+2024-12-08,Travel Booking,21,55.98
+2024-07-01,Clothing Store,100,316.99
+2024-12-13,Electronics Store,91,165.23
+2024-07-31,Online Shopping,54,478.55
+2024-02-20,Subscription Service,37,291.94
+2024-09-02,Subscription Service,34,266.63
+2024-10-28,Grocery Store,82,494.85
+2024-05-17,Restaurant,37,280.52
+2024-11-27,Travel Booking,93,169.16
+2024-06-10,Utility Bill Payment,27,180.61
+2024-12-16,Travel Booking,50,466.53
+2024-03-26,Refund,-17,-148.43
+2024-03-29,Grocery Store,23,288.33
+2024-04-05,Restaurant,55,373.46
+2024-06-06,Clothing Store,92,478.84
+2025-01-05,Grocery Store,40,440.89
+2024-12-08,Subscription Service,80,447.74
+2024-11-17,Electronics Store,65,452.69
+2024-03-23,Clothing Store,27,77.51
+2024-12-08,Utility Bill Payment,14,338.71
+2024-06-03,Travel Booking,61,312.3
+2024-02-28,Gas Station,7,212.12
+2024-06-24,Refund,-45,-127.68
+2024-07-27,Gas Station,17,303.76
+2024-11-02,Travel Booking,5,91.09
+2024-05-27,Refund,-22,-172.85
+2024-05-14,Travel Booking,76,424.63
+2024-07-24,Electronics Store,84,487.2
+2024-08-16,Gas Station,42,99.22
+2024-08-13,Grocery Store,95,360.86
+2024-03-12,Restaurant,43,304.19
+2024-10-07,Gas Station,77,179.07
+2024-05-17,Restaurant,94,202.06
+2024-10-27,Subscription Service,21,393.24
+2024-02-06,Grocery Store,95,13.92
+2024-08-02,Restaurant,26,147.88
+2024-06-29,Travel Booking,45,177.74
+2024-04-09,Refund,-46,-145.38
+2024-11-04,Restaurant,13,67.95
+2024-12-08,Clothing Store,57,292.81
+2024-06-03,Grocery Store,28,476.3
+2025-01-08,Electronics Store,30,451.46
+2024-04-08,Utility Bill Payment,90,464.0
+2024-03-19,Gas Station,67,346.96
+2024-09-24,Online Shopping,55,304.86
+2024-11-22,Travel Booking,78,492.4
+2024-12-02,Utility Bill Payment,84,11.29
+2024-12-31,Online Shopping,68,170.82
+2024-02-23,Online Shopping,47,184.44
+2024-07-29,Restaurant,62,243.79
+2024-06-10,Grocery Store,21,305.68
+2024-07-16,Refund,-22,-44.11
+2024-05-06,Subscription Service,12,372.04
+2024-04-19,Restaurant,22,104.75
+2024-04-19,Utility Bill Payment,14,258.34
+2024-05-15,Refund,-41,-115.65
+2024-02-20,Electronics Store,50,334.42
+2024-05-17,Refund,-39,-169.65
+2024-01-10,Subscription Service,53,197.89
+2024-08-05,Grocery Store,7,62.56
+2024-07-09,Refund,-10,-55.13
+2024-05-17,Subscription Service,45,79.69
+2024-06-18,Restaurant,12,336.29
+2024-06-04,Grocery Store,21,88.14
+2024-02-19,Restaurant,39,243.26
+2024-11-22,Utility Bill Payment,77,284.0
+2024-07-23,Subscription Service,56,433.85
+2024-02-04,Refund,-45,-158.73
+2024-06-18,Gas Station,90,449.0
+2024-04-21,Refund,-15,-82.65
+2024-09-29,Subscription Service,72,220.93
+2024-05-12,Refund,-40,-83.49
+2024-03-09,Travel Booking,33,444.19
+2024-10-01,Utility Bill Payment,28,270.52
+2024-07-24,Grocery Store,17,14.92
+2024-11-09,Clothing Store,30,134.07
+2024-12-07,Grocery Store,24,277.33
+2025-01-07,Travel Booking,71,77.42
+2024-10-08,Subscription Service,13,408.51
+2024-03-21,Gas Station,83,135.46
+2024-03-11,Gas Station,43,332.81
+2024-04-26,Gas Station,13,193.76
+2024-09-09,Grocery Store,61,138.99
+2024-09-02,Refund,-26,-48.52
+2024-02-22,Travel Booking,88,255.93
+2024-02-10,Restaurant,15,362.77
+2024-09-20,Online Shopping,64,493.54
+2024-12-03,Subscription Service,66,392.13
+2024-12-08,Refund,-21,-69.94
+2024-07-11,Gas Station,7,159.81
+2024-11-09,Grocery Store,5,52.59
+2024-08-20,Utility Bill Payment,91,355.31
+2024-07-04,Grocery Store,89,135.9
+2024-05-24,Gas Station,72,92.42
+2024-02-22,Travel Booking,71,348.44
+2024-11-18,Gas Station,67,371.52
+2024-01-28,Restaurant,18,157.72
+2024-04-29,Restaurant,18,406.34
+2024-06-24,Subscription Service,47,74.92
+2024-03-30,Refund,-30,-141.64
+2024-04-17,Travel Booking,73,180.92
+2024-06-03,Online Shopping,20,297.14
+2024-06-02,Utility Bill Payment,31,429.48
+2024-09-19,Subscription Service,39,301.5
+2024-04-22,Subscription Service,58,171.32
+2024-09-03,Utility Bill Payment,63,263.46
+2024-09-15,Clothing Store,81,284.93
+2024-01-24,Gas Station,30,107.54
+2024-11-09,Clothing Store,62,86.68
+2024-05-21,Restaurant,83,456.27
+2024-04-09,Utility Bill Payment,59,224.6
+2024-06-19,Refund,-38,-54.58
+2024-03-27,Travel Booking,23,143.37
+2024-01-13,Electronics Store,88,337.78
+2024-04-10,Grocery Store,27,317.23
+2024-01-15,Refund,-6,-187.41
+2024-11-18,Restaurant,62,271.3
+2024-06-19,Restaurant,90,477.15
+2024-07-11,Restaurant,51,215.71
+2024-12-21,Utility Bill Payment,25,168.2
+2024-10-20,Refund,-6,-64.96
+2024-04-29,Online Shopping,64,11.64
+2024-08-14,Online Shopping,48,375.59
+2024-07-14,Gas Station,39,125.69
+2024-02-10,Subscription Service,82,161.41
+2024-11-02,Refund,-46,-134.93
+2024-11-23,Online Shopping,35,268.68
+2024-05-17,Gas Station,73,252.66
+2024-09-22,Grocery Store,12,173.57
+2024-05-29,Gas Station,51,317.07
+2024-02-22,Refund,-45,-22.27
+2024-02-21,Utility Bill Payment,22,161.0
+2024-06-07,Electronics Store,78,378.0
+2024-11-21,Refund,-48,-110.31
+2024-08-08,Utility Bill Payment,61,222.16
+2024-08-01,Travel Booking,61,231.46
+2024-05-04,Clothing Store,38,338.35
+2024-04-23,Travel Booking,47,97.61
+2024-05-03,Online Shopping,59,447.82
+2024-02-18,Gas Station,24,134.11
+2024-09-17,Restaurant,64,153.48
+2024-12-09,Electronics Store,70,11.19
+2024-08-28,Electronics Store,64,269.64
+2024-06-28,Gas Station,86,380.53
+2024-03-01,Gas Station,53,92.32
+2024-08-14,Gas Station,50,488.8
+2024-02-24,Subscription Service,82,404.53
+2024-06-07,Travel Booking,78,254.45
+2024-11-12,Restaurant,77,85.23
+2024-01-21,Electronics Store,100,411.95
+2024-06-13,Clothing Store,81,395.38
+2024-02-13,Electronics Store,19,35.82
+2024-11-01,Electronics Store,14,178.45
+2024-03-06,Refund,-19,-101.02
+2024-08-30,Online Shopping,51,464.41
+2024-07-20,Grocery Store,21,84.64
+2024-01-12,Subscription Service,89,116.4
+2024-03-11,Gas Station,94,427.28
+2024-12-30,Travel Booking,62,235.99
+2024-07-20,Grocery Store,7,92.83
+2024-02-09,Electronics Store,35,280.55
+2024-06-03,Grocery Store,75,328.26
+2024-07-09,Restaurant,34,250.58
+2024-05-11,Gas Station,74,336.9
+2024-01-27,Utility Bill Payment,52,397.67
+2024-12-09,Grocery Store,72,159.71
+2024-05-18,Travel Booking,10,147.52
+2024-03-02,Clothing Store,36,285.69
+2024-06-22,Grocery Store,92,430.9
+2024-11-10,Grocery Store,95,10.04
+2024-03-10,Refund,-9,-147.03
+2024-11-23,Subscription Service,29,191.23
+2024-10-25,Refund,-9,-24.38
+2024-11-30,Travel Booking,16,202.09
+2024-12-05,Refund,-12,-176.51
+2024-08-09,Refund,-18,-159.48
+2024-01-17,Refund,-49,-174.09
+2024-11-20,Grocery Store,45,305.08
+2024-07-09,Utility Bill Payment,54,183.34
+2024-12-22,Electronics Store,32,114.45
+2025-01-06,Refund,-42,-24.89
+2024-07-27,Utility Bill Payment,48,475.06
+2024-01-17,Online Shopping,50,358.81
+2025-01-06,Clothing Store,81,87.3
+2024-11-19,Grocery Store,31,254.29
+2024-03-13,Restaurant,20,103.57
+2024-02-13,Electronics Store,26,72.05
+2024-11-27,Electronics Store,71,150.78
+2024-04-30,Travel Booking,74,350.78
+2025-01-06,Travel Booking,24,47.54
+2024-10-28,Refund,-44,-190.23
+2024-11-11,Electronics Store,27,244.63
+2024-08-27,Restaurant,38,16.21
+2024-04-01,Restaurant,38,118.04
+2024-11-11,Gas Station,23,424.02
+2024-02-04,Restaurant,46,159.22
+2024-09-16,Gas Station,33,39.74
+2024-06-28,Online Shopping,86,138.3
+2024-06-07,Online Shopping,20,197.1
+2024-05-29,Utility Bill Payment,92,166.2
+2024-11-25,Restaurant,75,231.46
+2025-01-02,Grocery Store,98,202.91
+2024-03-22,Clothing Store,24,437.45
+2024-12-02,Electronics Store,9,455.51
+2024-01-13,Electronics Store,99,211.94
+2024-08-18,Utility Bill Payment,20,244.83
+2024-10-02,Online Shopping,62,323.02
+2024-04-20,Utility Bill Payment,70,23.77
+2024-03-28,Online Shopping,27,21.97
+2024-07-07,Utility Bill Payment,37,332.57
+2024-03-09,Gas Station,48,119.94
+2024-03-30,Travel Booking,38,414.57
+2024-08-14,Gas Station,84,346.5
+2024-11-07,Travel Booking,38,286.83
+2024-02-16,Restaurant,63,490.96
+2024-10-05,Gas Station,30,176.88
+2024-12-05,Restaurant,13,432.24
+2024-01-24,Travel Booking,11,231.38
+2024-11-11,Utility Bill Payment,95,406.23
+2024-09-17,Gas Station,97,134.26
+2024-04-16,Refund,-19,-85.98
+2024-04-29,Gas Station,89,440.5
+2024-06-08,Gas Station,14,155.66
+2024-09-05,Refund,-41,-193.3
+2024-07-06,Electronics Store,91,169.22
+2024-04-22,Grocery Store,73,47.27
+2024-08-23,Online Shopping,14,125.21
+2024-01-16,Restaurant,93,232.95
+2024-02-05,Online Shopping,70,266.68
+2024-09-17,Subscription Service,12,369.01
+2024-02-18,Gas Station,27,275.6
+2024-11-20,Gas Station,26,283.07
+2024-11-06,Clothing Store,31,258.57
+2024-04-20,Clothing Store,91,425.64
+2024-08-22,Clothing Store,81,23.18
+2024-01-29,Gas Station,88,228.02
+2024-04-22,Electronics Store,70,148.67
+2024-10-24,Gas Station,28,395.58
+2024-05-17,Online Shopping,43,156.29
+2024-11-23,Subscription Service,94,408.92
+2024-04-09,Grocery Store,56,162.93
+2024-08-17,Grocery Store,28,217.84
+2024-08-04,Travel Booking,79,386.39
+2024-03-07,Travel Booking,84,94.64
+2024-10-28,Travel Booking,16,338.04
+2024-08-21,Gas Station,15,55.38
+2024-01-25,Refund,-13,-124.08
+2024-07-29,Travel Booking,9,308.43
+2024-07-20,Electronics Store,49,55.94
+2024-09-17,Grocery Store,36,400.64
+2024-04-29,Online Shopping,21,236.19
+2024-10-22,Subscription Service,36,88.45
+2024-09-27,Utility Bill Payment,82,244.12
+2024-09-08,Refund,-39,-22.75
+2024-03-31,Grocery Store,34,111.36
+2024-01-25,Travel Booking,59,173.22
+2024-01-16,Gas Station,39,354.95
+2024-06-04,Grocery Store,21,23.89
+2024-07-01,Grocery Store,14,321.63
+2024-05-12,Travel Booking,69,185.78
+2024-04-19,Online Shopping,62,351.43
+2024-05-27,Restaurant,38,315.86
+2024-01-25,Refund,-43,-107.8
+2024-07-07,Refund,-18,-128.73
+2024-03-27,Restaurant,74,260.27
+2024-02-28,Grocery Store,34,240.52
+2025-01-03,Clothing Store,10,348.75
+2024-10-14,Refund,-27,-184.63
+2024-05-15,Travel Booking,85,65.12
+2024-05-02,Gas Station,70,200.63
+2024-04-06,Restaurant,75,214.95
+2024-07-28,Refund,-13,-105.46
+2024-11-04,Refund,-40,-129.95
+2024-04-23,Subscription Service,95,438.34
+2024-03-24,Utility Bill Payment,13,174.54
+2024-10-19,Utility Bill Payment,46,152.0
+2024-11-25,Online Shopping,17,312.79
+2024-01-30,Electronics Store,90,452.5
+2024-01-27,Online Shopping,74,99.62
+2024-04-07,Utility Bill Payment,79,291.34
+2024-06-13,Clothing Store,18,79.56
+2024-04-17,Grocery Store,45,461.84
+2024-06-20,Electronics Store,77,225.91
+2024-03-21,Electronics Store,86,61.81
+2024-06-26,Refund,-45,-189.03
+2024-07-08,Grocery Store,59,161.23
+2024-01-25,Electronics Store,22,190.72
+2024-03-26,Restaurant,77,77.36
+2024-03-05,Restaurant,40,158.4
+2024-02-03,Clothing Store,50,67.14
+2024-04-10,Clothing Store,28,26.44
+2024-12-03,Subscription Service,76,440.85
+2024-06-26,Subscription Service,60,110.1
+2024-06-19,Online Shopping,48,207.43
+2024-09-23,Subscription Service,23,454.67
+2024-09-24,Gas Station,45,23.04
+2024-05-27,Utility Bill Payment,35,261.56
+2024-04-08,Gas Station,80,257.55
+2024-02-16,Travel Booking,44,420.07
+2024-09-02,Gas Station,78,202.92
+2024-12-09,Electronics Store,11,34.46
+2024-01-20,Clothing Store,58,309.09
+2024-09-20,Gas Station,12,315.05
+2024-05-25,Utility Bill Payment,62,91.42
+2024-09-28,Restaurant,45,400.45
+2024-07-17,Electronics Store,76,56.29
+2024-07-06,Grocery Store,65,311.52
+2024-11-30,Utility Bill Payment,91,42.02
+2024-08-03,Subscription Service,74,230.65
+2024-06-08,Gas Station,80,373.81
+2024-12-13,Grocery Store,88,179.61
+2025-01-05,Travel Booking,36,194.85
+2024-01-28,Travel Booking,10,99.36
+2024-11-18,Restaurant,74,289.54
+2024-10-17,Subscription Service,75,432.07
+2024-07-05,Subscription Service,89,444.1
+2024-10-02,Travel Booking,20,433.14
+2024-04-16,Utility Bill Payment,98,36.1
+2024-04-12,Refund,-13,-147.11
+2024-12-06,Electronics Store,84,499.91
+2024-07-10,Electronics Store,75,158.26
+2024-06-18,Utility Bill Payment,49,203.76
+2024-09-14,Online Shopping,61,128.46
+2024-05-09,Clothing Store,36,80.48
+2024-12-06,Clothing Store,83,478.25
+2024-08-14,Subscription Service,95,110.22
+2024-07-14,Utility Bill Payment,79,120.99
+2024-11-19,Clothing Store,53,436.34
+2024-02-20,Electronics Store,39,499.39
+2024-04-06,Travel Booking,89,332.01
+2024-12-22,Utility Bill Payment,35,179.67
+2024-03-12,Travel Booking,7,29.77
+2024-08-29,Electronics Store,40,189.0
+2024-05-21,Travel Booking,52,321.87
+2024-12-02,Online Shopping,33,80.54
+2024-12-11,Gas Station,24,374.97
+2024-06-06,Grocery Store,37,497.5
+2024-12-25,Clothing Store,85,185.92
+2024-08-24,Online Shopping,89,49.11
+2024-03-28,Grocery Store,39,19.05
+2024-01-22,Travel Booking,23,227.86
+2024-06-05,Electronics Store,87,464.16
+2024-01-23,Online Shopping,29,304.86
+2024-06-26,Electronics Store,42,188.09
+2024-12-05,Refund,-30,-94.21
+2024-04-30,Gas Station,48,323.37
+2024-08-06,Grocery Store,56,454.49
+2024-11-02,Utility Bill Payment,94,402.53
+2024-01-20,Utility Bill Payment,9,380.37
+2024-01-29,Restaurant,38,37.24
+2024-08-11,Electronics Store,95,434.81
+2024-09-12,Travel Booking,34,84.32
+2024-06-28,Grocery Store,23,112.46
+2024-11-20,Subscription Service,44,362.64
+2024-06-13,Restaurant,85,396.56
+2024-11-09,Subscription Service,89,105.71
+2024-04-09,Subscription Service,9,228.88
+2024-05-01,Refund,-27,-12.91
+2024-04-27,Restaurant,28,427.77
+2024-08-02,Restaurant,73,59.31
+2024-05-26,Gas Station,87,492.24
+2024-11-07,Subscription Service,76,493.29
+2024-07-06,Refund,-24,-177.44
+2024-10-11,Travel Booking,7,360.08
+2024-09-08,Electronics Store,61,200.32
+2024-05-23,Electronics Store,63,318.0
+2024-11-08,Clothing Store,70,358.03
+2024-12-24,Restaurant,42,279.3
+2024-07-22,Restaurant,45,239.75
+2024-11-30,Utility Bill Payment,80,493.49
+2024-02-01,Refund,-37,-157.58
+2024-08-17,Grocery Store,52,471.86
+2024-03-26,Electronics Store,70,98.37
+2024-07-29,Clothing Store,58,52.14
+2024-03-14,Clothing Store,76,141.06
+2024-03-19,Travel Booking,99,57.44
+2024-09-09,Gas Station,20,159.22
+2024-02-13,Travel Booking,91,317.61
+2024-06-05,Refund,-29,-95.76
+2024-04-25,Grocery Store,65,101.22
+2024-06-18,Grocery Store,94,28.95
+2024-08-30,Gas Station,65,97.77
+2024-02-03,Subscription Service,33,458.18
+2024-07-19,Gas Station,9,333.96
+2024-04-04,Refund,-29,-57.29
+2024-08-03,Subscription Service,46,290.98
+2024-01-12,Grocery Store,87,323.63
+2024-04-04,Clothing Store,22,398.41
+2024-10-05,Grocery Store,10,482.08
+2024-08-24,Gas Station,89,213.77
+2024-04-26,Restaurant,75,421.37
+2024-09-14,Refund,-36,-198.86
+2024-08-19,Clothing Store,13,149.96
+2024-03-04,Utility Bill Payment,99,357.9
+2024-04-03,Refund,-43,-113.64
+2024-11-25,Electronics Store,65,29.21
+2025-01-01,Subscription Service,82,436.73
+2024-04-23,Grocery Store,43,162.87
+2024-05-13,Subscription Service,22,460.58
+2024-02-11,Clothing Store,40,77.3
+2024-07-01,Subscription Service,20,368.37
+2024-04-02,Subscription Service,49,102.9
+2024-12-18,Restaurant,12,330.37
+2024-07-31,Travel Booking,51,157.82
+2024-11-02,Travel Booking,24,102.64
+2024-08-01,Travel Booking,81,177.44
+2024-01-12,Online Shopping,15,113.22
+2024-10-09,Travel Booking,6,444.13
+2024-09-04,Grocery Store,31,372.68
+2024-08-13,Electronics Store,39,336.25
+2024-12-23,Online Shopping,90,86.74
+2024-04-29,Online Shopping,46,204.67
+2024-05-25,Grocery Store,81,463.39
+2024-09-02,Refund,-14,-112.41
+2024-01-10,Restaurant,91,445.02
+2024-09-19,Electronics Store,88,234.13
+2024-10-04,Grocery Store,52,463.4
+2024-09-26,Restaurant,47,206.54
+2024-02-18,Clothing Store,86,368.95
+2024-02-11,Gas Station,11,228.18
+2024-11-08,Electronics Store,8,146.37
+2024-09-09,Clothing Store,37,477.9
+2024-08-23,Online Shopping,93,173.36
+2024-02-28,Electronics Store,6,153.0
+2024-09-01,Subscription Service,97,487.39
+2024-01-25,Electronics Store,85,109.65
+2024-02-25,Online Shopping,23,75.62
+2024-01-13,Subscription Service,44,468.48
+2024-03-03,Subscription Service,65,301.19
+2025-01-03,Grocery Store,37,125.33
+2024-08-31,Subscription Service,16,124.18
+2024-08-17,Subscription Service,31,444.22
+2024-12-05,Utility Bill Payment,85,484.27
+2024-03-20,Grocery Store,67,172.37
+2024-08-05,Gas Station,85,378.02
+2024-12-15,Online Shopping,5,161.59
+2024-09-25,Restaurant,19,355.72
+2024-05-17,Subscription Service,55,90.53
+2024-08-09,Online Shopping,87,327.16
+2024-05-01,Electronics Store,24,27.57
+2024-04-05,Electronics Store,15,412.95
+2024-05-11,Restaurant,37,258.67
+2024-09-10,Grocery Store,99,221.92
+2024-07-18,Refund,-44,-169.64
+2024-09-03,Refund,-42,-175.44
+2024-04-08,Refund,-32,-44.18
+2024-06-13,Electronics Store,49,377.9
+2024-03-17,Subscription Service,89,287.8
+2024-10-29,Online Shopping,73,486.01
+2024-03-29,Online Shopping,28,242.24
+2024-03-26,Travel Booking,61,24.08
+2024-11-05,Grocery Store,71,458.28
+2024-04-13,Refund,-20,-29.04
+2024-06-08,Online Shopping,63,183.32
+2024-06-09,Online Shopping,76,242.05
+2024-02-09,Refund,-22,-199.68
+2024-05-22,Travel Booking,73,92.62
+2024-12-22,Utility Bill Payment,61,326.65
+2024-09-01,Grocery Store,19,443.25
+2024-11-14,Travel Booking,96,151.52
+2024-10-10,Subscription Service,26,192.31
+2024-04-24,Clothing Store,21,344.82
+2024-04-09,Grocery Store,61,242.12
+2024-03-14,Travel Booking,61,369.71
+2024-08-25,Subscription Service,33,37.03
+2024-12-24,Gas Station,79,175.56
+2024-03-28,Online Shopping,65,257.47
+2024-01-19,Restaurant,53,128.46
+2024-10-26,Subscription Service,63,470.94
+2024-03-28,Online Shopping,14,400.26
+2024-11-02,Clothing Store,52,406.05
+2024-03-26,Restaurant,79,83.74
+2024-08-22,Electronics Store,72,193.87
+2024-11-15,Refund,-18,-92.32
+2024-06-04,Electronics Store,14,97.44
+2024-05-13,Subscription Service,24,427.92
+2024-04-03,Subscription Service,50,41.81
+2024-08-09,Grocery Store,64,69.57
+2024-10-04,Restaurant,43,268.16
+2024-02-25,Online Shopping,90,137.68
+2024-10-19,Utility Bill Payment,98,381.38
+2024-08-13,Electronics Store,74,133.73
+2024-01-26,Utility Bill Payment,31,30.99
+2024-07-27,Refund,-28,-114.91
+2024-03-05,Restaurant,91,409.0
+2024-11-28,Subscription Service,16,433.15
+2024-09-20,Utility Bill Payment,72,495.15
+2024-08-24,Electronics Store,17,141.4
+2024-05-15,Gas Station,25,151.84
+2024-03-27,Grocery Store,90,120.19
+2024-08-31,Subscription Service,58,469.75
+2024-10-01,Grocery Store,14,209.22
+2024-02-02,Clothing Store,26,263.85
+2024-05-07,Online Shopping,82,427.92
+2024-04-29,Travel Booking,51,478.27
+2025-01-09,Restaurant,44,137.37
+2024-04-07,Grocery Store,93,162.02
+2024-06-15,Clothing Store,30,284.25
+2024-10-11,Gas Station,23,44.05
+2024-10-16,Utility Bill Payment,85,304.51
+2024-08-25,Restaurant,26,318.44
+2024-07-22,Electronics Store,18,35.69
+2024-11-22,Refund,-37,-41.9
+2024-07-17,Restaurant,45,142.22
+2024-05-02,Gas Station,43,291.79
+2024-12-26,Clothing Store,37,157.13
+2024-09-11,Refund,-22,-32.56
+2024-09-17,Grocery Store,8,344.87
+2024-05-11,Grocery Store,78,250.72
+2025-01-01,Online Shopping,93,221.6
+2024-03-08,Gas Station,91,275.17
+2024-07-14,Grocery Store,47,153.4
+2024-04-06,Online Shopping,56,139.67
+2024-11-02,Online Shopping,94,260.99
+2024-10-31,Refund,-14,-104.85
+2024-10-15,Subscription Service,33,429.11
+2024-01-27,Online Shopping,36,492.72
+2024-11-17,Refund,-44,-57.64
+2024-07-26,Online Shopping,93,336.89
+2024-09-09,Subscription Service,89,488.75
+2024-05-08,Subscription Service,25,38.97
+2024-08-10,Gas Station,53,436.04
+2024-09-03,Gas Station,50,144.37
+2024-08-04,Grocery Store,97,477.11
+2024-02-14,Online Shopping,53,96.56
+2024-04-27,Online Shopping,85,336.99
+2024-07-13,Grocery Store,10,380.25
+2024-11-24,Electronics Store,91,319.66
+2024-03-05,Subscription Service,60,189.39
+2024-03-10,Refund,-26,-41.22
+2024-09-28,Online Shopping,97,375.62
+2024-10-28,Clothing Store,35,488.79
+2024-05-12,Subscription Service,97,218.04
+2024-05-01,Online Shopping,62,338.21
+2024-04-09,Clothing Store,43,145.7
+2024-11-03,Clothing Store,81,98.6
+2024-11-25,Utility Bill Payment,96,294.5
+2024-10-31,Refund,-6,-71.78
+2024-05-09,Refund,-21,-35.62
+2024-04-23,Subscription Service,86,75.61
+2024-07-29,Subscription Service,21,143.28
+2024-02-08,Travel Booking,100,371.42
+2024-05-13,Subscription Service,17,11.29
+2024-06-22,Clothing Store,7,453.55
+2024-09-13,Refund,-20,-46.24
+2025-01-08,Subscription Service,47,178.55
+2024-08-22,Travel Booking,94,239.55
+2024-01-22,Online Shopping,19,402.4
+2024-12-28,Travel Booking,41,275.24
+2024-04-05,Restaurant,43,463.57
+2024-09-12,Electronics Store,87,446.24
+2024-01-18,Refund,-35,-168.65
+2024-06-13,Grocery Store,69,473.95
+2024-12-09,Gas Station,82,312.62
+2024-03-06,Grocery Store,75,220.37
+2024-06-18,Restaurant,52,81.36
+2024-12-18,Restaurant,22,372.8
+2024-03-22,Refund,-16,-22.28
+2024-10-20,Grocery Store,32,265.05
+2024-03-13,Travel Booking,85,403.95
+2024-11-07,Electronics Store,79,52.38
+2024-04-22,Grocery Store,99,405.77
+2024-07-02,Subscription Service,81,308.01
+2024-12-30,Electronics Store,99,443.95
+2024-05-29,Restaurant,25,471.06
+2024-06-29,Gas Station,68,66.45
+2024-08-28,Travel Booking,7,229.79
+2025-01-01,Refund,-42,-76.21
+2024-05-09,Gas Station,43,173.23
+2024-04-09,Subscription Service,17,243.25
+2024-09-29,Online Shopping,27,83.31
+2024-07-07,Grocery Store,60,298.49
+2024-03-07,Travel Booking,30,391.95
+2024-06-16,Online Shopping,15,231.26
+2024-03-16,Utility Bill Payment,83,373.05
+2024-12-27,Grocery Store,28,38.83
+2024-10-05,Online Shopping,53,120.29
+2024-03-04,Electronics Store,23,67.37
+2024-04-19,Travel Booking,17,152.91
+2024-05-10,Electronics Store,100,97.13
+2024-06-28,Gas Station,10,167.54
+2024-08-17,Utility Bill Payment,92,440.1
+2024-09-23,Restaurant,19,293.91
+2024-02-21,Clothing Store,42,494.67
+2024-11-16,Grocery Store,62,37.27
+2024-04-11,Travel Booking,12,63.72
+2024-06-26,Electronics Store,100,215.8
+2024-12-29,Online Shopping,27,18.35
+2024-01-27,Refund,-18,-67.75
+2024-03-23,Online Shopping,69,311.83
+2024-09-10,Travel Booking,20,210.64
+2024-03-18,Subscription Service,11,307.02
+2024-01-27,Utility Bill Payment,33,210.2
+2024-12-23,Gas Station,18,62.71
+2024-07-17,Restaurant,12,326.39
+2024-05-08,Travel Booking,37,374.31
+2024-10-31,Online Shopping,61,258.68
+2024-06-27,Subscription Service,31,45.21
+2024-05-21,Online Shopping,65,329.87
+2024-02-13,Electronics Store,43,102.33
+2024-12-29,Restaurant,15,45.3
+2024-06-05,Grocery Store,57,161.84
+2024-10-10,Restaurant,33,453.25
+2024-07-20,Restaurant,47,376.13
+2024-03-13,Electronics Store,22,333.33
+2024-05-12,Grocery Store,100,57.66
+2024-05-02,Subscription Service,73,283.91
+2024-04-21,Clothing Store,90,466.85
+2024-10-08,Utility Bill Payment,76,303.59
+2024-08-05,Restaurant,69,278.0
+2024-05-29,Electronics Store,89,229.54
+2024-05-11,Subscription Service,86,213.76
+2024-04-13,Utility Bill Payment,85,188.69
+2024-11-07,Utility Bill Payment,41,408.75
+2024-11-17,Grocery Store,12,431.73
+2024-12-26,Gas Station,69,394.14
+2024-02-22,Refund,-41,-97.56
+2024-05-17,Clothing Store,72,351.85
+2024-12-06,Grocery Store,24,449.87
+2024-02-06,Grocery Store,62,189.72
+2024-06-11,Subscription Service,28,480.33
+2024-06-29,Electronics Store,29,95.83
+2024-02-28,Electronics Store,5,389.23
+2024-03-27,Restaurant,68,420.79
+2024-10-10,Online Shopping,63,259.97
+2024-04-02,Grocery Store,98,116.66
+2024-05-16,Online Shopping,81,345.04
+2024-09-10,Utility Bill Payment,59,323.09
+2024-01-29,Grocery Store,48,412.54
+2024-08-02,Restaurant,23,249.34
+2024-06-29,Subscription Service,48,134.74
+2024-09-16,Utility Bill Payment,25,418.21
+2024-02-24,Grocery Store,59,90.23
+2024-12-21,Clothing Store,84,121.47
+2024-06-13,Utility Bill Payment,51,139.35
+2024-01-16,Gas Station,95,144.69
+2024-10-17,Online Shopping,20,77.59
+2024-10-18,Travel Booking,28,256.62
+2024-08-09,Gas Station,27,119.0
+2024-07-12,Grocery Store,97,388.46
+2024-04-24,Travel Booking,59,148.37
+2024-04-30,Restaurant,44,329.86
+2024-01-29,Grocery Store,90,244.32
+2024-03-06,Travel Booking,50,247.97
+2024-04-16,Subscription Service,63,224.17
+2024-11-25,Refund,-18,-82.65
+2024-02-28,Travel Booking,47,21.37
+2024-08-17,Online Shopping,42,473.25
+2024-07-06,Refund,-8,-42.63
+2024-07-21,Utility Bill Payment,14,388.65
+2024-08-16,Online Shopping,45,197.09
+2024-12-30,Gas Station,10,96.09
+2025-01-07,Grocery Store,55,217.19
+2024-08-27,Refund,-21,-77.99
+2024-05-10,Utility Bill Payment,96,175.04
+2024-06-26,Restaurant,72,149.79
+2024-01-24,Online Shopping,61,322.83
+2024-08-17,Grocery Store,42,62.22
+2024-07-06,Travel Booking,15,469.06
+2024-03-14,Gas Station,89,37.64
+2024-02-10,Refund,-11,-179.21
+2024-04-05,Grocery Store,13,411.41
+2024-09-22,Utility Bill Payment,84,230.16
+2024-07-26,Electronics Store,24,354.78
+2024-10-28,Clothing Store,54,181.3
+2024-06-13,Online Shopping,56,84.57
+2024-03-13,Online Shopping,55,257.81
+2024-03-13,Utility Bill Payment,15,429.7
+2024-07-10,Gas Station,90,430.02
+2024-03-31,Refund,-8,-138.62
+2024-04-01,Online Shopping,33,118.12
+2024-05-12,Refund,-23,-153.87
