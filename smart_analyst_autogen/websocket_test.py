@@ -13,34 +13,6 @@ from smart_analyst_autogen.main import on_connect
 
 PORT = 8001
 
-
-# class MyRequestHandler(SimpleHTTPRequestHandler):
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(
-#             *args,
-#             directory=Path(__file__).parents[1] / "website_files" / "templates",
-#             **kwargs,
-#         )
-#
-#     def do_GET(self):
-#         if self.path == "/":
-#             self.path = "/chat.html"
-#         return SimpleHTTPRequestHandler.do_GET(self)
-#
-#
-# handler = MyRequestHandler
-#
-# with IOWebsockets.run_server_in_thread(on_connect=on_connect, port=8080) as uri:
-#     print(f"Websocket server started at {uri}", flush=True)
-#
-#     with HTTPServer(("", PORT), handler) as httpd:
-#         print(f"HTTP server started at http://localhost:{str(PORT)}")
-#
-#         try:
-#             httpd.serve_forever()
-#         except KeyboardInterrupt:
-#             print(" - HTTP server stopped.", flush = True)
-
 html = """
 <!DOCTYPE html>
 <html>
@@ -264,7 +236,7 @@ async def run_websocket_server(app):
 
 app = FastAPI(lifespan=run_websocket_server)
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 async def get():
