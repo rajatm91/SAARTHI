@@ -58,34 +58,14 @@ def aggregate_expenses(group_by: Annotated[Literal["description", "month"], "Gro
         df["transaction_date"] = pd.to_datetime(df["transaction_date"], errors='coerce')
         df["month"] = df["transaction_date"].dt.month_name()
         spend_data = df[df["transaction_amount"] > 0].groupby("month")["transaction_amount"].sum()
-    spend_data.to_csv("distribute_expenses.csv")
-    print(spend_data.to_markdown())
-    return spend_data.to_markdown()
-
-
-# def plot_pie_chart(group_by: Annotated[Literal["description", "month"], "Group by category"],
-#                    chart_type: Annotated[Literal["pie", "bar"], "Chart type"]) -> dict:
-#     if group_by == "description":
-#         spend_data = df[df["transaction_amount"] > 0].groupby("description")["transaction_amount"].sum()
-#         title = "Spend by Category"
-#     elif group_by == "month":
-#         df["transaction_date"] = pd.to_datetime(df["transaction_date"], errors='coerce')
-#         df["month"] = df["transaction_date"].dt.month_name()
-#         spend_data = df[df["transaction_amount"] > 0].groupby("month")["transaction_amount"].sum()
-#         title = "Spend by Month"
-#     random_name = uuid.uuid4()
-#     file_name = os.path.join(image_path, f"{random_name}.png")
-#     plt.figure(figsize=(8, 8))
-#     plt.pie(spend_data, labels=spend_data.index, autopct='%1.1f%%', startangle=140)
-#     plt.title(title)
-#     plt.savefig(file_name)
-#     return {"image": file_name}
+    # spend_data.to_csv("distribute_expenses.csv")
+    # print(spend_data.to_markdown())
+    return spend_data.to_dict()
 
 
 
-
-def plot_pie_chart(group_by: Annotated[Literal["description", "month"], "Group by category"],
-                   chart_type: Annotated[Literal["pie", "bar"], "Chart type"]) -> dict:
+def plot_chart(group_by: Annotated[Literal["description", "month"], "Group by category"],
+                   chart_type: Annotated[Literal["pie", "bar"], "Chart type"] = "bar") -> dict:
     # Assuming df is a predefined DataFrame and image_path is a predefined path
 
     x_axis = ""

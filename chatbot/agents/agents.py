@@ -7,7 +7,7 @@ from agents.tools import (
     get_total_credit_transaction,
     get_total_transaction_for_month,
     aggregate_expenses,
-    plot_pie_chart,
+    plot_chart,
     get_total_debit_transactions,
 )
 
@@ -16,11 +16,10 @@ import os
 
 load_dotenv()
 
-model = "gpt-3.5-turbo"
+model = "gpt-4o-2024-08-06"
 llm_config = {
     "model": model,
-    "api_key": os.environ.get("OPENAI_API_KEY"),
-    "temperature": 0
+    "api_key": os.environ.get("OPENAI_API_KEY")
 }
 
 function_description_map = {
@@ -28,7 +27,7 @@ function_description_map = {
     "get_total_credit_transaction": "Calculates the total amount refunded or credited in the statement",
     "get_total_transaction_for_month": "Calculates the total transaction value for a month",
     "aggregate_expenses": "Aggregates the expenses based on the groupby parameter",
-    "plot_pie_chart": "Plots a pie chart depicting the distribution of expenses based on either month or description",
+    "plot_chart": "Plots a pie or bar chart depicting the distribution of expenses based on either month or description based on user's input",
 }
 
 
