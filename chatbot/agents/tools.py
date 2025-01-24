@@ -1,16 +1,22 @@
 import pathlib
-
+import plotly.express as px
 import pandas as pd
 from typing import Literal, Annotated
 import uuid
 import matplotlib.pyplot as plt
 import os
+import boto3
+
 
 plt.switch_backend('Agg')  # To prevent GUI backend errors in server environments
 
 file_path = pathlib.Path(__file__).parents[2] / "data" / "credit_card_transactions.csv"
+image_path = pathlib.Path(__file__).parents[2] / "images"
 # Load data
 df = pd.read_csv(file_path)
+region_name = "ap-south-1"
+client = boto3.client("s3", region_name=region_name)
+
 
 
 def get_month_number(month_name: str) -> int:
@@ -20,6 +26,7 @@ def get_month_number(month_name: str) -> int:
     except ValueError:
         month_number = datetime.strptime(month_name.strip(), "%B").month
     return month_number
+
 
 
 def get_total_debit_transactions() -> float:
@@ -43,7 +50,7 @@ def get_total_transaction_for_month(month: Annotated[str, "Month for transaction
     return round(filtered_df["transaction_amount"].sum(), 2)
 
 
-def aggregate_expenses(group_by: Annotated[Literal["description", "month"], "Group by category"]) -> dict:
+def aggregate_expenses(group_by: Annotated[Literal["description", "month"], "Group by category"]) -> str:
     spend_data = pd.DataFrame()
     if group_by == "description":
         spend_data = df[df["transaction_amount"] > 0].groupby("description")["transaction_amount"].sum()
@@ -52,54 +59,12 @@ def aggregate_expenses(group_by: Annotated[Literal["description", "month"], "Gro
         df["month"] = df["transaction_date"].dt.month_name()
         spend_data = df[df["transaction_amount"] > 0].groupby("month")["transaction_amount"].sum()
     spend_data.to_csv("distribute_expenses.csv")
-    return spend_data.to_dict()
+    print(spend_data.to_markdown())
+    return spend_data.to_markdown()
 
 
-# Sample dataframe (replace with your actual data)
-df = pd.DataFrame({
-    "transaction_amount": [100, 200, 300, 400, 500],
-    "transaction_date": ["2025-01-01", "2025-02-01", "2025-03-01", "2025-04-01", "2025-05-01"],
-    "description": ["Food", "Travel", "Shopping", "Food", "Shopping"]
-})
-
-def plot_pie_chart(group_by: Annotated[Literal["description", "month"], "Group by category"]) -> str:
-    # Group the data based on the selected category (description or month)
-    if group_by == "description":
-        spend_data = df[df["transaction_amount"] > 0].groupby("description")["transaction_amount"].sum()
-        title = "Spend by Category"
-    elif group_by == "month":
-        df["transaction_date"] = pd.to_datetime(df["transaction_date"], errors='coerce')
-        df["month"] = df["transaction_date"].dt.month_name()
-        spend_data = df[df["transaction_amount"] > 0].groupby("month")["transaction_amount"].sum()
-        title = "Spend by Month"
-    
-    # Generate a unique filename for the pie chart image
-    random_name = uuid.uuid4()
-    # image_directory = os.path.join(os.getcwd(), "static", "images")  # Store image inside your project folder (e.g., /static/images/)
-    image_directory = "/Users/shobhitsaxena/Documents/Project/SAARTHI/chatbot/static/images"
-
-    
-    # /Users/shobhitsaxena/Documents/Project/SAARTHI/chatbot
-    os.makedirs(image_directory, exist_ok=True)  # Create the directory if it doesn't exist
-    
-    file_name = os.path.join(image_directory, f"{random_name}.png")
-    
-    # Plot the pie chart
-    plt.figure(figsize=(8, 8))
-    plt.pie(spend_data, labels=spend_data.index, autopct='%1.1f%%', startangle=140)
-    plt.title(title)
-    plt.savefig(file_name)
-    plt.close()  # Close the plot to free up memory
-    
-    # Return the relative path to the image (for use in HTML)
-    # return os.path.join("static", "images", f"{random_name}.png")
-    return os.path.join("static", "images", f"{random_name}.png")
-
-# Example usage
-file_path = plot_pie_chart("description")
-print(f"Chart saved at: {file_path}")
-
-# def plot_pie_chart(group_by: Annotated[Literal["description", "month"], "Group by category"]) -> str:
+# def plot_pie_chart(group_by: Annotated[Literal["description", "month"], "Group by category"],
+#                    chart_type: Annotated[Literal["pie", "bar"], "Chart type"]) -> dict:
 #     if group_by == "description":
 #         spend_data = df[df["transaction_amount"] > 0].groupby("description")["transaction_amount"].sum()
 #         title = "Spend by Category"
@@ -109,10 +74,51 @@ print(f"Chart saved at: {file_path}")
 #         spend_data = df[df["transaction_amount"] > 0].groupby("month")["transaction_amount"].sum()
 #         title = "Spend by Month"
 #     random_name = uuid.uuid4()
-#     file_name = os.path.join("/Users/shobhitsaxena/Downloads/images/", f"{random_name}.png")
+#     file_name = os.path.join(image_path, f"{random_name}.png")
 #     plt.figure(figsize=(8, 8))
 #     plt.pie(spend_data, labels=spend_data.index, autopct='%1.1f%%', startangle=140)
 #     plt.title(title)
 #     plt.savefig(file_name)
-#     return file_name
+#     return {"image": file_name}
 
+
+
+
+def plot_pie_chart(group_by: Annotated[Literal["description", "month"], "Group by category"],
+                   chart_type: Annotated[Literal["pie", "bar"], "Chart type"]) -> dict:
+    # Assuming df is a predefined DataFrame and image_path is a predefined path
+
+    x_axis = ""
+    title = ""
+    spend_data = None
+    if group_by == "description":
+        spend_data = df.groupby("description")["transaction_amount"].sum().reset_index()
+        spend_data.columns = ['category', 'total_amount']
+        title = "Spend by Category"
+        x_axis = 'category'
+    elif group_by == "month":
+        df["transaction_date"] = pd.to_datetime(df["transaction_date"], errors='coerce')
+        df["month"] = df["transaction_date"].dt.month_name()
+        spend_data = df.groupby("month")["transaction_amount"].sum().reset_index()
+        spend_data.columns = ['month', 'total_amount']
+        title = "Spend by Month"
+        x_axis = 'month'
+
+    random_name = uuid.uuid4()
+    file_path = os.path.join(image_path, f"{random_name}.png")
+
+    fig = None
+    if chart_type == "pie":
+        fig = px.pie(spend_data, values='total_amount', names=x_axis, title=title)
+    elif chart_type == "bar":
+        fig = px.bar(spend_data, x=x_axis, y='total_amount', title=title)
+
+    fig.write_image(file_path)
+    s3_path = upload_image_s3("autogendemo", file_path, f"{random_name}.png",region_name )
+    return {"image": s3_path}
+
+
+def upload_image_s3(bucket: str, image_path: str, image_name: str, region: str):
+    key = f"charts/{image_name}"
+    client.upload_file(image_path, bucket, key )
+    return f"https://{bucket}.s3.{region}.amazonaws.com/{key}"

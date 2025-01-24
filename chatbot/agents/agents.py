@@ -8,7 +8,7 @@ from agents.tools import (
     get_total_transaction_for_month,
     aggregate_expenses,
     plot_pie_chart,
-    get_total_debit_transactions
+    get_total_debit_transactions,
 )
 
 from dotenv import load_dotenv
@@ -43,11 +43,12 @@ def on_connect(iostream: IOWebsockets) -> None:
         llm_config=llm_config,
         system_message="""You are an helpful AI assistant.
             You can help me with basic data analysis for different financial statements.
-               - You will answer using the tools provided
+               - If someone says Hi !
+               - You will always answer using the tools provided. If tools are not available then politely mention your capbilities.
                - Consider Rupee as the currency, so for expense unless specified mention it in Rupees. 
                - For the charts, ensure that the chart path is returned with message
                - Always return the response in structure format.
-            Return 'COMPLETE' when the task is done.
+            Return 'TERMINATE' when the task is done.
             """
 
     )
@@ -82,17 +83,17 @@ def on_connect(iostream: IOWebsockets) -> None:
 
         )
 
-    conclusion = AssistantAgent(
-        name="conclusion",
-        system_message="""You are reviewer of the responses, ensure to refine the answers without changing the context.
-            - If there are no response from the agent, politely let them know the group's capability, 
-            - For questions related to capability, please list all type of analysis that can be done.
-            - Ensure that all details are captured and answer is precise but thorough and complete.  
-            - For answers with chart, ensure to pass the file path of the chart.
-            """,
-        llm_config=llm_config,
-        human_input_mode="NEVER",  # Never ask for human input.
-    )
+    # conclusion = AssistantAgent(
+    #     name="conclusion",
+    #     system_message="""You are reviewer of the responses, ensure to refine the answers without changing the context.
+    #         - If there are no response from the agent, politely let them know the group's capability,
+    #         - For questions related to capability, please list all type of analysis that can be done.
+    #         - Ensure that all details are captured and answer is precise but thorough and complete.
+    #         - For answers with images, ensure to send the file path of the image as well.
+    #         """,
+    #     llm_config=llm_config,
+    #     human_input_mode="NEVER",  # Never ask for human input.
+    # )
 
     print(
         f" - on_connect(): Initiating chat with agent {data_analyst_assistant} using message '{initial_msg}"
@@ -102,11 +103,11 @@ def on_connect(iostream: IOWebsockets) -> None:
     # task1 = """what is my spend across different categories and generate a pie chart"""
     task1 = "what is my total debit and credit amount ? "
 
-    group_chat = GroupChat(agents=[user_proxy, data_analyst_assistant,conclusion], messages=[], max_round=5)
-    manager = GroupChatManager(groupchat=group_chat, llm_config=llm_config)
+   # group_chat = GroupChat(agents=[user_proxy, data_analyst_assistant,conclusion], messages=[], max_round=5)
+   # manager = GroupChatManager(groupchat=group_chat, llm_config=llm_config)
 
 
-    user_proxy.initiate_chat(manager,
+    user_proxy.initiate_chat(data_analyst_assistant,
                              message=initial_msg)
 
     print(user_proxy.chat_messages)
