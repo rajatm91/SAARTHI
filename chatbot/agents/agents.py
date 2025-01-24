@@ -1,5 +1,5 @@
 import json
-from autogen import UserProxyAgent, AssistantAgent, register_function, GroupChatManager
+from autogen import UserProxyAgent, AssistantAgent, register_function, GroupChatManager, GroupChat
 from autogen.io import IOWebsockets
 
 from agents.tools import (
@@ -38,18 +38,17 @@ def on_connect(iostream: IOWebsockets) -> None:
 
     initial_msg = iostream.input()
 
-
-
     data_analyst_assistant = AssistantAgent(
         name="data_analyst_agent",
-        llm_config= llm_config,
+        llm_config=llm_config,
         system_message="""You are an helpful AI assistant.
-        You can help me with basic data analysis for different financial statements.
-           - You will answer using the tools provided
-           - Consider Rupee as the currency, so for expense unless specified mention it in Rupees. 
-           - Always return the response in structure format.
-        Return 'TERMINATE' when the task is done.
-        """
+            You can help me with basic data analysis for different financial statements.
+               - You will answer using the tools provided
+               - Consider Rupee as the currency, so for expense unless specified mention it in Rupees. 
+               - For the charts, ensure that the chart path is returned with message
+               - Always return the response in structure format.
+            Return 'COMPLETE' when the task is done.
+            """
 
     )
 
@@ -83,12 +82,14 @@ def on_connect(iostream: IOWebsockets) -> None:
 
         )
 
-
     conclusion = AssistantAgent(
         name="conclusion",
-        system_message="""You are a helpful assistant.
-        Base on the history of the groupchat, answer the original question from User_proxy.
-        """,
+        system_message="""You are reviewer of the responses, ensure to refine the answers without changing the context.
+            - If there are no response from the agent, politely let them know the group's capability, 
+            - For questions related to capability, please list all type of analysis that can be done.
+            - Ensure that all details are captured and answer is precise but thorough and complete.  
+            - For answers with chart, ensure to pass the file path of the chart.
+            """,
         llm_config=llm_config,
         human_input_mode="NEVER",  # Never ask for human input.
     )
@@ -101,11 +102,11 @@ def on_connect(iostream: IOWebsockets) -> None:
     # task1 = """what is my spend across different categories and generate a pie chart"""
     task1 = "what is my total debit and credit amount ? "
 
-    # group_chat = GroupChat(agents=[user_proxy, data_analyst_assistant, bi_analyst_assistant,conclusion], messages=[], max_round=5)
-    # manager = GroupChatManager(groupchat=group_chat, llm_config=llm_config)
+    group_chat = GroupChat(agents=[user_proxy, data_analyst_assistant,conclusion], messages=[], max_round=5)
+    manager = GroupChatManager(groupchat=group_chat, llm_config=llm_config)
 
 
-    user_proxy.initiate_chat(data_analyst_assistant,
+    user_proxy.initiate_chat(manager,
                              message=initial_msg)
 
     print(user_proxy.chat_messages)

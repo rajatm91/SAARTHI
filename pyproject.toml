@@ -1,9 +1,10 @@
 [tool.poetry]
-name = "smart-analyst-autogen"
+name = "SAARTHI"
 version = "0.1.0"
 description = ""
 authors = ["Rajat Mishra <mishra.rajat91@gmail.com>"]
 readme = "README.md"
+packages = [{include = "chatbot", from="chatbot"}]
 
 [tool.poetry.dependencies]
 python = ">=3.12, <3.13"
@@ -12,6 +13,7 @@ pandas = "^2.2.3"
 matplotlib = "^3.10.0"
 pydantic = "2.8.2"
 gradio = "^5.13.0"
+fastapi = "^0.115.7"
 
 
 [build-system]

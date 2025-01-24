@@ -1,3 +1,5 @@
+import pathlib
+
 import pandas as pd
 from typing import Literal, Annotated
 import uuid
@@ -6,8 +8,9 @@ import os
 
 plt.switch_backend('Agg')  # To prevent GUI backend errors in server environments
 
+file_path = pathlib.Path(__file__).parents[2] / "data" / "credit_card_transactions.csv"
 # Load data
-df = pd.read_csv("/Users/shobhitsaxena/Documents/Project/SAARTHI/data/credit_card_transactions.csv")
+df = pd.read_csv(file_path)
 
 
 def get_month_number(month_name: str) -> int:
