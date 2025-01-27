@@ -64,7 +64,7 @@ def get_total_transaction_for_month(month: Annotated[str, "Month for transaction
     return get_transaction_value(filtered_df, transaction_type)
 
 
-def aggregate_expenses(group_by: Annotated[Literal["description", "month"], "Group by category"]) -> str:
+def aggregate_expenses(group_by: Annotated[Literal["description", "month"], "Group by category"]) -> dict:
     spend_data = pd.DataFrame()
     if group_by == "description":
         spend_data = df[df["transaction_amount"] > 0].groupby("description")["transaction_amount"].sum().reset_index()
