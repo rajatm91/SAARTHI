@@ -1,4 +1,5 @@
 import json
+import pprint
 from autogen import UserProxyAgent, AssistantAgent, register_function, GroupChatManager, GroupChat
 from autogen.io import IOWebsockets
 from pydantic import BaseModel
@@ -86,7 +87,6 @@ def on_connect(iostream: IOWebsockets) -> None:
 
 
     for tool in tools:
-        print(f"##### {tool.__name__}")
         register_function(
             tool,
             caller=data_analyst_assistant,
@@ -97,7 +97,7 @@ def on_connect(iostream: IOWebsockets) -> None:
         )
 
     conclusion = AssistantAgent(
-        name="conclusion",
+        name="critic",
         system_message="""You are reviewer of the responses, 
             - Ensure to refine the answers without changing the context.
             - Consider Rupee as the currency, so for expense unless specified mention it in Rupees.
@@ -126,5 +126,5 @@ def on_connect(iostream: IOWebsockets) -> None:
     user_proxy.initiate_chat(manager,
                              message=initial_msg, summary_method="reflection_with_llm")
 
-    print(user_proxy.chat_messages)
+    # pprint.pprint(user_proxy.chat_messages)
 
