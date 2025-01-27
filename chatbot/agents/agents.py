@@ -1,6 +1,7 @@
 import json
 from autogen import UserProxyAgent, AssistantAgent, register_function, GroupChatManager, GroupChat
 from autogen.io import IOWebsockets
+from pydantic import BaseModel
 
 from agents.tools import (
     get_total_due,
@@ -16,16 +17,30 @@ import os
 
 load_dotenv()
 
-model = "gpt-4o-2024-08-06"
+
+
+class Steps(BaseModel):
+    explanation: str
+    output: str
+
+
+class Reasoning(BaseModel):
+    steps: list[Steps]
+    final_answer: str
+
+
+model = "gpt-4o"
 llm_config = {
     "model": model,
-    "api_key": os.environ.get("OPENAI_API_KEY")
+    "api_key": os.environ.get("OPENAI_API_KEY"),
+    "response_format": Reasoning
+
 }
 
 function_description_map = {
     "get_total_due": "Calculates the total amount owed by the user",
     "get_total_credit_transaction": "Calculates the total amount refunded or credited in the statement",
-    "get_total_transaction_for_month": "Calculates the total transaction value for a month",
+    "get_total_transaction_for_month": "Calculates the total transaction value for a month aggregating the debit and credit",
     "aggregate_expenses": "Aggregates the expenses based on the groupby parameter",
     "plot_chart": "Plots a pie or bar chart depicting the distribution of expenses based on either month or description based on user's input",
 }
@@ -42,7 +57,6 @@ def on_connect(iostream: IOWebsockets) -> None:
         llm_config=llm_config,
         system_message="""You are an helpful AI assistant.
             You can help me with basic data analysis for different financial statements.
-               - If someone says Hi !
                - You will always answer using the tools provided. If tools are not available then politely mention your capbilities.
                - Consider Rupee as the currency, so for expense unless specified mention it in Rupees. 
                - For the charts, ensure that the chart path is returned with message
@@ -58,7 +72,7 @@ def on_connect(iostream: IOWebsockets) -> None:
         llm_config=False,
         human_input_mode="NEVER",
         code_execution_config={
-            "last_n_messages": 1,
+            "last_n_messages": 3,
             "work_dir": "tasks",
             "use_docker": False
         },
@@ -67,7 +81,7 @@ def on_connect(iostream: IOWebsockets) -> None:
     )
 
     tools = [get_total_due, get_total_credit_transaction,  get_total_transaction_for_month, aggregate_expenses,
-             plot_pie_chart, get_total_debit_transactions]
+             plot_chart, get_total_debit_transactions]
 
 
 
@@ -82,17 +96,17 @@ def on_connect(iostream: IOWebsockets) -> None:
 
         )
 
-    # conclusion = AssistantAgent(
-    #     name="conclusion",
-    #     system_message="""You are reviewer of the responses, ensure to refine the answers without changing the context.
-    #         - If there are no response from the agent, politely let them know the group's capability,
-    #         - For questions related to capability, please list all type of analysis that can be done.
-    #         - Ensure that all details are captured and answer is precise but thorough and complete.
-    #         - For answers with images, ensure to send the file path of the image as well.
-    #         """,
-    #     llm_config=llm_config,
-    #     human_input_mode="NEVER",  # Never ask for human input.
-    # )
+    conclusion = AssistantAgent(
+        name="conclusion",
+        system_message="""You are reviewer of the responses, ensure to refine the answers without changing the context.
+            - Consider Rupee as the currency, so for expense unless specified mention it in Rupees.
+            - If there are no response from the agent, politely let them know the group's capability,
+            - Ensure that all details are captured and answer is precise but thorough and complete.
+            - For answers with images, ensure to send the file path of the image as well.
+            """,
+        llm_config=llm_config,
+        human_input_mode="NEVER",  # Never ask for human input.
+    )
 
     print(
         f" - on_connect(): Initiating chat with agent {data_analyst_assistant} using message '{initial_msg}"
@@ -100,59 +114,16 @@ def on_connect(iostream: IOWebsockets) -> None:
 
 
     # task1 = """what is my spend across different categories and generate a pie chart"""
-    task1 = "what is my total debit and credit amount ? "
+    #task1 = "what is my total debit and credit amount ?"
 
-   # group_chat = GroupChat(agents=[user_proxy, data_analyst_assistant,conclusion], messages=[], max_round=5)
-   # manager = GroupChatManager(groupchat=group_chat, llm_config=llm_config)
+   #group_chat = GroupChat(agents=[user_proxy], messages=[], max_round=5)
+   #manager = GroupChatManager(groupchat=group_chat, llm_config=llm_config)
 
+    group_chat = GroupChat(agents=[user_proxy, data_analyst_assistant, conclusion], messages=[], max_round=5)
+    manager = GroupChatManager(group_chat, llm_config=llm_config)
 
-    user_proxy.initiate_chat(data_analyst_assistant,
-                             message=initial_msg)
+    user_proxy.initiate_chat(manager,
+                             message=initial_msg, summary_method="reflection_with_llm")
 
     print(user_proxy.chat_messages)
 
-# def on_connect():
-#     print("Connection established!")
-
-# def on_connect(ws):
-#     print("Connection established!")
-    
-#     # Listen for messages from the client
-#     async def on_message(message):
-#         try:
-#             # Parse incoming message (expected to be a JSON object)
-#             data = json.loads(message)
-#             function_name = data.get("function_name")
-#             params = data.get("params", [])
-            
-#             if function_name:
-#                 # Call the function from the agents' tools based on the function name
-#                 result = execute_function(function_name, *params)
-                
-#                 # Send the result back to the client
-#                 ws.send(json.dumps({"status": "success", "result": result}))
-#             else:
-#                 ws.send(json.dumps({"status": "error", "message": "Invalid function name."}))
-#         except Exception as e:
-#             ws.send(json.dumps({"status": "error", "message": str(e)}))
-
-#     # Attach the message handler
-#     ws.on_message = on_message
-
-# def execute_function(function_name: str, *args, **kwargs):
-#     if function_name not in function_description_map:
-#         raise ValueError(f"Function {function_name} is not supported.")
-    
-#     function_map = {
-#         "get_total_due": get_total_due,
-#         "get_total_credit_transaction": get_total_credit_transaction,
-#         "get_total_transaction_for_month": get_total_transaction_for_month,
-#         "aggregate_expenses": aggregate_expenses,
-#         "plot_pie_chart": plot_pie_chart,
-#     }
-
-#     func = function_map.get(function_name)
-#     if func:
-#         return func(*args, **kwargs)
-#     else:
-#         raise ValueError(f"Function {function_name} not found.")
