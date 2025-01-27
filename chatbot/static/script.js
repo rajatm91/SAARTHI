@@ -23,7 +23,9 @@ function handleMessage(data) {
   if (data && data.content && data.content.content) {
     const messageContent = data.content.content.trim();
     const imagePath = extractImagePath(data.content.content);
-   
+    const finalAnswer =
+      parseConcatenatedJSON(data?.content?.content)?.[0]?.final_answer || null;
+
     if (messageContent.includes("Here is the analysis")) {
       // Extract and format the table data
       const rows = messageContent
@@ -45,6 +47,7 @@ function handleMessage(data) {
       typeof messageContent === "string" &&
       !isJsonObject(messageContent)
     ) {
+      // addMessage(finalAnswer || messageContent, "agent");
       addMessage(messageContent, "agent");
     } else {
       console.log("Invalid or terminate message:", messageContent);
@@ -76,27 +79,312 @@ function sendMessage() {
   }
 }
 
+// function addMessage(message, sender) {
+//   const messageElement = document.createElement("li");
+//   messageElement.textContent = message;
+//   messageElement.classList.add(sender); // Add 'user' or 'agent' class
+
+//   document.getElementById("messages").appendChild(messageElement);
+//   scrollToBottom();
+// }
+
 function addMessage(message, sender) {
   const messageElement = document.createElement("li");
-  messageElement.textContent = message;
+
   messageElement.classList.add(sender); // Add 'user' or 'agent' class
+
+  const parsedData = parseConcatenatedJSON(message) || message;
+  if (parsedData && parsedData.length > 0) {
+    // Iterate through parsed data and create accordions or plain messages
+    parsedData?.forEach((data) => {
+      const accordionContainer = document.createElement("div");
+      accordionContainer.classList.add("accordion");
+
+      // Handle objects by creating accordion items
+      if (typeof data === "object") {
+        Object.entries(data).forEach(([key, value]) => {
+          const accordionItem = document.createElement("div");
+          accordionItem.classList.add("accordion-item");
+
+          // Accordion title
+          const accordionTitle = document.createElement("div");
+          accordionTitle.classList.add("accordion-title");
+          accordionTitle.textContent = key;
+
+          // Arrow span
+          const arrow = document.createElement("span");
+          arrow.classList.add("arrow");
+          arrow.textContent = "▼"; // Default arrow
+          accordionTitle.appendChild(arrow);
+
+          // Click event for toggling accordion
+          accordionTitle.onclick = function () {
+            const isActive = this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            arrow.textContent = isActive ? "▲" : "▼"; // Toggle arrow direction
+            content.style.display = isActive ? "block" : "none";
+          };
+
+          // Accordion content
+          const accordionContent = document.createElement("div");
+          accordionContent.classList.add("accordion-content");
+          accordionContent.style.display = "none"; // Hidden by default
+
+          // Check if the value is an object or an array
+          if (typeof value === "object") {
+            // accordionContent.textContent = JSON.stringify(value, null, 2);
+            const formattedContent = formatJSON(value);
+            accordionContent.appendChild(formattedContent);
+          } else {
+            accordionContent.textContent = value;
+          }
+
+          accordionItem.appendChild(accordionTitle);
+          accordionItem.appendChild(accordionContent);
+          accordionContainer.appendChild(accordionItem);
+        });
+
+        messageElement.appendChild(accordionContainer);
+      } else {
+        // If the data is a simple string, append it directly
+        const simpleMessage = document.createElement("div");
+        simpleMessage.textContent = data;
+        messageElement.appendChild(simpleMessage);
+      }
+    });
+  } else {
+    messageElement.textContent = message;
+  }
 
   document.getElementById("messages").appendChild(messageElement);
   scrollToBottom();
 }
 
-// // Function to add messages to the server messages chat
-function addServerMessage(messageContent) {
-  const serverMessages = document.getElementById("server-messages");
-  if (serverMessages) {
-    const newMessage = document.createElement("li");
-    newMessage.textContent = messageContent;
-    newMessage.classList.add("agent");
-    serverMessages.appendChild(newMessage);
+function formatJSON(json) {
+  const container = document.createElement("div");
+
+  if (Array.isArray(json)) {
+    json.forEach((item, index) => {
+      const itemDiv = document.createElement("div");
+      itemDiv.classList.add("json-item");
+      itemDiv.innerHTML = `<strong>[${index}]</strong>: ${
+        typeof item === "object" ? "" : item
+      }`;
+
+      if (typeof item === "object") {
+        const nestedContent = formatJSON(item);
+        itemDiv.appendChild(nestedContent);
+      }
+
+      container.appendChild(itemDiv);
+    });
   } else {
-    console.error("Server messages container not found!");
+    Object.entries(json).forEach(([key, value]) => {
+      const itemDiv = document.createElement("div");
+      itemDiv.classList.add("json-item");
+      itemDiv.innerHTML = `<strong>${key}:</strong> ${
+        typeof value === "object" ? "" : value
+      }`;
+
+      if (typeof value === "object") {
+        const nestedContent = formatJSON(value);
+        itemDiv.appendChild(nestedContent);
+      }
+
+      container.appendChild(itemDiv);
+    });
   }
-  scrollToBottomServerMessage();
+
+  return container;
+}
+function parseConcatenatedJSON(concatenatedJSON) {
+  try {
+    // Split the string into separate JSON objects
+    const jsonObjects = concatenatedJSON?.trim()?.split("\n");
+
+    // console.log('JSON OBJECT',jsonObjects)
+    // Parse each JSON string into an object
+    const parsedObjects = jsonObjects?.map((jsonStr) => JSON.parse(jsonStr));
+
+    return parsedObjects;
+  } catch (error) {
+    // console.error("Error parsing concatenated JSON:", error);
+    return [];
+  }
+}
+
+function addServerMessage(messageContent) {
+  const serverMessagesContainer = document.getElementById("server-messages");
+
+  if (!serverMessagesContainer) {
+    console.error("Server messages container not found!");
+    return;
+  }
+
+  const messages = Array.isArray(messageContent)
+    ? messageContent
+    : [messageContent];
+
+  messages?.forEach((message, index) => {
+    // Parse the incoming message
+    const parsedData =
+      typeof message === "string" ? JSON.parse(message) : message;
+
+    // Create a message box
+    const messageBox = document.createElement("div");
+    messageBox.classList.add("message-box");
+
+    // Recursive function to handle nested data
+    const createKeyValueDiv = (key, value) => {
+      const keyValueDiv = document.createElement("div");
+      keyValueDiv.classList.add("key-value-pair");
+
+      const keySpan = document.createElement("span");
+      keySpan.classList.add("key");
+      keySpan.textContent = key;
+
+      const valueSpan = document.createElement("span");
+      valueSpan.classList.add("value");
+
+      // Handle nested objects
+      if (typeof value === "object" && value !== null) {
+        const nestedContainer = document.createElement("div");
+        nestedContainer.classList.add("nested-container");
+
+        Object.entries(value).forEach(([nestedKey, nestedValue]) => {
+          nestedContainer.appendChild(
+            createKeyValueDiv(nestedKey, nestedValue)
+          );
+        });
+
+        valueSpan.appendChild(nestedContainer);
+      } else if (
+        typeof value === "string" &&
+        (value.startsWith("{") || value.startsWith("["))
+      ) {
+        // Parse stringified JSON
+        try {
+          let parsedValue = JSON.parse(value);
+
+          // Check if the parsed value is an array of JSON objects
+          if (Array.isArray(parsedValue)) {
+            parsedValue.forEach((item) => {
+              const nestedContainer = document.createElement("div");
+              nestedContainer.classList.add("nested-container");
+              Object.entries(item).forEach(([nestedKey, nestedValue]) => {
+                nestedContainer.appendChild(
+                  createKeyValueDiv(nestedKey, nestedValue)
+                );
+              });
+              valueSpan.appendChild(nestedContainer);
+            });
+          } else if (typeof parsedValue === "object") {
+            const nestedContainer = document.createElement("div");
+            nestedContainer.classList.add("nested-container");
+
+            Object.entries(parsedValue).forEach(([nestedKey, nestedValue]) => {
+              nestedContainer.appendChild(
+                createKeyValueDiv(nestedKey, nestedValue)
+              );
+            });
+
+            valueSpan.appendChild(nestedContainer);
+          } else {
+            valueSpan.textContent = parsedValue;
+          }
+        } catch (e) {
+          valueSpan.textContent = value; // If parsing fails, show as is
+        }
+      } else {
+        valueSpan.textContent = value;
+      }
+
+      keyValueDiv.appendChild(keySpan);
+      keyValueDiv.appendChild(valueSpan);
+      return keyValueDiv;
+    };
+
+    // Handle the nested 'content' field if it contains stringified JSON
+    if (parsedData.content && typeof parsedData.content === "string") {
+      // First, decode the escaped string inside the content field
+      let contentDecoded;
+      try {
+        contentDecoded = JSON.parse(parsedData.content); // Parse the outer content first
+      } catch (e) {
+        console.error("Failed to parse the content:", e);
+        contentDecoded = parsedData.content; // Fallback to raw content
+      }
+
+      // Now check if the contentDecoded has newline-separated JSON objects
+      if (typeof contentDecoded === "string" && contentDecoded.includes("\n")) {
+        const contentParts = contentDecoded
+          .split("\n")
+          .map((item) => {
+            try {
+              return JSON.parse(item.trim()); // Try parsing each line
+            } catch (e) {
+              return item.trim(); // Fallback to raw string if parsing fails
+            }
+          })
+          .filter(Boolean); // Remove empty entries
+
+        contentParts.forEach((contentPart) => {
+          if (typeof contentPart === "object" && contentPart !== null) {
+            Object.entries(contentPart).forEach(([key, value]) => {
+              messageBox.appendChild(createKeyValueDiv(key, value));
+            });
+          } else {
+            const textDiv = document.createElement("div");
+            textDiv.classList.add("text-content");
+            textDiv.textContent = contentPart;
+            messageBox.appendChild(textDiv); // For non-object content, just display the raw text
+          }
+        });
+      } else {
+        // If it's a single JSON object or string, parse and display it
+        if (typeof contentDecoded === "object" && contentDecoded !== null) {
+          Object.entries(contentDecoded).forEach(([key, value]) => {
+            messageBox.appendChild(createKeyValueDiv(key, value));
+          });
+        } else {
+          const textDiv = document.createElement("div");
+          textDiv.classList.add("text-content");
+          textDiv.textContent = contentDecoded;
+          messageBox.appendChild(textDiv); // For non-object content, just display the raw text
+        }
+      }
+    } else {
+      // If no nested content, just render the regular message
+      Object.entries(parsedData).forEach(([key, value]) => {
+        messageBox.appendChild(createKeyValueDiv(key, value));
+      });
+    }
+
+    // Add the message box to the container
+    serverMessagesContainer.appendChild(messageBox);
+
+    // Add a connector if it's not the last message
+    if (index === messages.length - 1) {
+      const connector = document.createElement("div");
+      connector.classList.add("connector");
+      serverMessagesContainer.appendChild(connector);
+    }
+  });
+
+  // Scroll to the bottom to show the latest messages
+  // setTimeout(() => {
+  //   serverMessagesContainer.scrollTop = serverMessagesContainer.scrollHeight;
+  // }, 0);
+  scrollToBottom();
+}
+
+function parseMessage(message) {
+  try {
+    return JSON.parse(message);
+  } catch (e) {
+    console.error("Failed to parse message:", message);
+    return { error: "Invalid JSON" };
+  }
 }
 
 function scrollToBottomServerMessage() {
@@ -122,9 +410,9 @@ function isJsonObject(str) {
 }
 
 function extractImagePath(message) {
-  const regex = /!\[.*?\]\((.*?)\)/; 
+  const regex = /!\[.*?\]\((.*?)\)/;
   const match = message.match(regex);
-  return match ? match[1] : null; 
+  return match ? match[1] : null;
 }
 
 function addImageMessage(imagePath) {
