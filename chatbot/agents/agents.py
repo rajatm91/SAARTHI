@@ -98,7 +98,8 @@ def on_connect(iostream: IOWebsockets) -> None:
 
     conclusion = AssistantAgent(
         name="conclusion",
-        system_message="""You are reviewer of the responses, ensure to refine the answers without changing the context.
+        system_message="""You are reviewer of the responses, 
+            - Ensure to refine the answers without changing the context.
             - Consider Rupee as the currency, so for expense unless specified mention it in Rupees.
             - If there are no response from the agent, politely let them know the group's capability,
             - Ensure that all details are captured and answer is precise but thorough and complete.
