@@ -73,8 +73,7 @@ def aggregate_expenses(group_by: Annotated[Literal["description", "month"], "Gro
         df["month"] = df["transaction_date"].dt.month_name()
         spend_data = df[df["transaction_amount"] > 0].groupby("month")["transaction_amount"].sum().reset_index()
     # spend_data.to_csv("distribute_expenses.csv")
-    print(spend_data.to_html(index=False))
-    return spend_data.to_html(index=False)
+    return spend_data.to_dict()
 
 
 
