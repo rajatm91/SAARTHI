@@ -20,7 +20,12 @@ function connectWebSocket() {
 
 function handleMessage(data) {
   addServerMessage(JSON.stringify(data));
-  if (data && data.content && data.content.content) {
+  if (
+    data &&
+    data?.type !== "tool_response" &&
+    data.content &&
+    data.content.content
+  ) {
     const messageContent = data.content.content.trim();
     const imagePath = extractImagePath(data.content.content);
     const finalAnswer =
@@ -45,9 +50,11 @@ function handleMessage(data) {
       messageContent &&
       messageContent !== "TERMINATE" &&
       typeof messageContent === "string" &&
-      !isJsonObject(messageContent)
+      !isJsonObject(messageContent) &&
+      finalAnswer
     ) {
-      // addMessage(finalAnswer || messageContent, "agent");
+      addMessage(finalAnswer, "agent");
+    } else if (messageContent && data?.content?.sender_name !== "user_proxy") {
       addMessage(messageContent, "agent");
     } else {
       console.log("Invalid or terminate message:", messageContent);
@@ -79,15 +86,6 @@ function sendMessage() {
   }
 }
 
-// function addMessage(message, sender) {
-//   const messageElement = document.createElement("li");
-//   messageElement.textContent = message;
-//   messageElement.classList.add(sender); // Add 'user' or 'agent' class
-
-//   document.getElementById("messages").appendChild(messageElement);
-//   scrollToBottom();
-// }
-
 function addMessage(message, sender) {
   const messageElement = document.createElement("li");
 
@@ -103,45 +101,50 @@ function addMessage(message, sender) {
       // Handle objects by creating accordion items
       if (typeof data === "object") {
         Object.entries(data).forEach(([key, value]) => {
-          const accordionItem = document.createElement("div");
-          accordionItem.classList.add("accordion-item");
+          if (key === "final_answer") {            
+            const finalAnswerMessage = document.createElement("div");
+            finalAnswerMessage.innerHTML = `<strong>FinalAnswer:</strong> ${value}`;
+            messageElement.appendChild(finalAnswerMessage);
+          } else {        
+            const accordionItem = document.createElement("div");
+            accordionItem.classList.add("accordion-item");
 
-          // Accordion title
-          const accordionTitle = document.createElement("div");
-          accordionTitle.classList.add("accordion-title");
-          accordionTitle.textContent = key;
+            // Accordion title
+            const accordionTitle = document.createElement("div");
+            accordionTitle.classList.add("accordion-title");
+            accordionTitle.textContent = key;
 
-          // Arrow span
-          const arrow = document.createElement("span");
-          arrow.classList.add("arrow");
-          arrow.textContent = "▼"; // Default arrow
-          accordionTitle.appendChild(arrow);
+            // Arrow span
+            const arrow = document.createElement("span");
+            arrow.classList.add("arrow");
+            arrow.textContent = "▼"; // Default arrow
+            accordionTitle.appendChild(arrow);
 
-          // Click event for toggling accordion
-          accordionTitle.onclick = function () {
-            const isActive = this.classList.toggle("active");
-            const content = this.nextElementSibling;
-            arrow.textContent = isActive ? "▲" : "▼"; // Toggle arrow direction
-            content.style.display = isActive ? "block" : "none";
-          };
+            // Click event for toggling accordion
+            accordionTitle.onclick = function () {
+              const isActive = this.classList.toggle("active");
+              const content = this.nextElementSibling;
+              arrow.textContent = isActive ? "▲" : "▼"; // Toggle arrow direction
+              content.style.display = isActive ? "block" : "none";
+            };
 
-          // Accordion content
-          const accordionContent = document.createElement("div");
-          accordionContent.classList.add("accordion-content");
-          accordionContent.style.display = "none"; // Hidden by default
+            // Accordion content
+            const accordionContent = document.createElement("div");
+            accordionContent.classList.add("accordion-content");
+            accordionContent.style.display = "none"; // Hidden by default
 
-          // Check if the value is an object or an array
-          if (typeof value === "object") {
-            // accordionContent.textContent = JSON.stringify(value, null, 2);
-            const formattedContent = formatJSON(value);
-            accordionContent.appendChild(formattedContent);
-          } else {
-            accordionContent.textContent = value;
+            // Check if the value is an object or an array
+            if (typeof value === "object") {
+              const formattedContent = formatJSON(value);
+              accordionContent.appendChild(formattedContent);
+            } else {
+              accordionContent.textContent = value;
+            }
+
+            accordionItem.appendChild(accordionTitle);
+            accordionItem.appendChild(accordionContent);
+            accordionContainer.appendChild(accordionItem);
           }
-
-          accordionItem.appendChild(accordionTitle);
-          accordionItem.appendChild(accordionContent);
-          accordionContainer.appendChild(accordionItem);
         });
 
         messageElement.appendChild(accordionContainer);
@@ -422,7 +425,7 @@ function addImageMessage(imagePath) {
     newMessage.classList.add("agent");
 
     const image = document.createElement("img");
-    image.src = "https://picsum.photos/536/354";
+    image.src = extractRelativePath(imagePath); 
 
     image.alt = "Server Image";
 
@@ -432,6 +435,14 @@ function addImageMessage(imagePath) {
   } else {
     console.error("Messages container not found!");
   }
+}
+function extractRelativePath(imagePath) {
+  const basePath = "/chatbot/static/"; 
+  const index = imagePath.indexOf(basePath);
+  if (index !== -1) {
+    return imagePath.substring(index);
+  }
+  return null; 
 }
 
 function addTableMessage(rows) {

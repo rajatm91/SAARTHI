@@ -11,7 +11,7 @@ import boto3
 plt.switch_backend('Agg')  # To prevent GUI backend errors in server environments
 
 file_path = pathlib.Path(__file__).parents[2] / "data" / "credit_card_transactions.csv"
-image_path = pathlib.Path(__file__).parents[2] / "images"
+image_path = pathlib.Path(__file__).parents[1] / "static" / "images"
 # Load data
 df = pd.read_csv(file_path)
 region_name = "ap-south-1"
@@ -64,7 +64,7 @@ def get_total_transaction_for_month(month: Annotated[str, "Month for transaction
     return get_transaction_value(filtered_df, transaction_type)
 
 
-def aggregate_expenses(group_by: Annotated[Literal["description", "month"], "Group by category"]) -> str:
+def aggregate_expenses(group_by: Annotated[Literal["description", "month"], "Group by category"]) -> dict:
     spend_data = pd.DataFrame()
     if group_by == "description":
         spend_data = df[df["transaction_amount"] > 0].groupby("description")["transaction_amount"].sum().reset_index()
