@@ -120,7 +120,7 @@ def on_connect(iostream: IOWebsockets) -> None:
    #group_chat = GroupChat(agents=[user_proxy], messages=[], max_round=5)
    #manager = GroupChatManager(groupchat=group_chat, llm_config=llm_config)
 
-    group_chat = GroupChat(agents=[user_proxy, data_analyst_assistant, conclusion], messages=[], max_round=5)
+    group_chat = GroupChat(agents=[user_proxy, data_analyst_assistant, conclusion], messages=[])
     manager = GroupChatManager(group_chat, llm_config=llm_config)
 
     user_proxy.initiate_chat(manager,

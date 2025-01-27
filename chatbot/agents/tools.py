@@ -11,7 +11,7 @@ import boto3
 plt.switch_backend('Agg')  # To prevent GUI backend errors in server environments
 
 file_path = pathlib.Path(__file__).parents[2] / "data" / "credit_card_transactions.csv"
-image_path = pathlib.Path(__file__).parents[2] / "images"
+image_path = pathlib.Path(__file__).parents[1] / "static" / "images"
 # Load data
 df = pd.read_csv(file_path)
 region_name = "ap-south-1"
