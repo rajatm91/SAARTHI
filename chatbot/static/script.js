@@ -30,8 +30,16 @@ function handleMessage(data) {
     const imagePath = extractImagePath(data.content.content);
     const finalAnswer =
       parseConcatenatedJSON(data?.content?.content)?.[0]?.final_answer || null;
-
-    if (messageContent.includes("Here is the analysis")) {
+    if (messageContent.includes("|") && messageContent.includes("---")) {
+      addNewTableMessage(messageContent, "agent");
+    } else if (
+      messageContent.includes(
+        "The total spend across different categories is as follows:"
+      )
+    ) {
+      const tableData = extractKeyValueFromList(messageContent);
+      addListBasedTableMessage(tableData, "agent");
+    } else if (messageContent.includes("Here is the analysis")) {
       // Extract and format the table data
       const rows = messageContent
         .split("\n")
@@ -61,7 +69,39 @@ function handleMessage(data) {
     }
   }
 }
+function addListBasedTableMessage(data, sender) {
+  const container = document.getElementById("messages");
+  const messageElement = document.createElement("li");
+  messageElement.classList.add(
+    sender === "agent" ? "agent-message" : "user-message"
+  );
 
+  let tableHtml = "<table class='chat-table'>";
+  tableHtml +=
+    "<thead><tr><th>Category</th><th>Amount (Rupees)</th></tr></thead>";
+  tableHtml += "<tbody>";
+  data.forEach((row) => {
+    tableHtml += `<tr><td>${row.key}</td><td>${row.value}</td></tr>`;
+  });
+  tableHtml += "</tbody></table>";
+
+  messageElement.innerHTML = tableHtml;
+  container.appendChild(messageElement);
+}
+
+function extractKeyValueFromList(messageContent) {
+  const lines = messageContent.split("\n");
+  const data = [];
+
+  lines.forEach((line) => {
+    if (line.includes(":")) {
+      const [key, value] = line.split(":");
+      data.push({ key: key.replace("-", "").trim(), value: value.trim() });
+    }
+  });
+
+  return data;
+}
 function sendMessage() {
   const input = document.getElementById("messageText");
   const text = input.value.trim();
@@ -86,6 +126,44 @@ function sendMessage() {
   }
 }
 
+function addNewTableMessage(message, sender) {
+  const messageElement = document.createElement("li");
+
+  messageElement.classList.add(sender);
+  const tableContainer = document.createElement("div");
+  tableContainer.classList.add("table-container");
+
+  const rows = message.split("\n").filter((row) => row.trim() !== "");
+  const table = document.createElement("table");
+  table.classList.add("chat-table");
+
+  rows.forEach((row, index) => {
+    const tr = document.createElement("tr");
+    const cells = row
+      .split("|")
+      .map((cell) => cell.trim())
+      .filter((cell) => cell !== ""); // Split columns
+
+    cells.forEach((cell, cellIndex) => {
+      const td = document.createElement(index === 0 ? "th" : "td");
+      td.textContent = cell;
+
+      if (index === 1) {
+        td.style.borderBottom = "2px solid #ccc";
+      }
+
+      tr.appendChild(td);
+    });
+
+    table.appendChild(tr);
+  });
+
+  tableContainer.appendChild(table);
+  messageElement.appendChild(tableContainer);
+
+  document.getElementById("messages").appendChild(messageElement);
+  scrollToBottom();
+}
 function addMessage(message, sender) {
   const messageElement = document.createElement("li");
 
@@ -101,11 +179,11 @@ function addMessage(message, sender) {
       // Handle objects by creating accordion items
       if (typeof data === "object") {
         Object.entries(data).forEach(([key, value]) => {
-          if (key === "final_answer") {            
+          if (key === "final_answer") {
             const finalAnswerMessage = document.createElement("div");
             finalAnswerMessage.innerHTML = `<strong>FinalAnswer:</strong> ${value}`;
             messageElement.appendChild(finalAnswerMessage);
-          } else {        
+          } else {
             const accordionItem = document.createElement("div");
             accordionItem.classList.add("accordion-item");
 
@@ -425,7 +503,7 @@ function addImageMessage(imagePath) {
     newMessage.classList.add("agent");
 
     const image = document.createElement("img");
-    image.src = extractRelativePath(imagePath); 
+    image.src = extractRelativePath(imagePath);
 
     image.alt = "Server Image";
 
@@ -437,12 +515,12 @@ function addImageMessage(imagePath) {
   }
 }
 function extractRelativePath(imagePath) {
-  const basePath = "/chatbot/static/"; 
+  const basePath = "/chatbot/static/";
   const index = imagePath.indexOf(basePath);
   if (index !== -1) {
     return imagePath.substring(index);
   }
-  return null; 
+  return null;
 }
 
 function addTableMessage(rows) {

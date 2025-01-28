@@ -34,7 +34,7 @@ model = "gpt-4o"
 llm_config = {
     "model": model,
     "api_key": os.environ.get("OPENAI_API_KEY"),
-    "response_format": Reasoning
+    # "response_format": Reasoning
 
 }
 
