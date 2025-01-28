@@ -466,3 +466,40 @@ button:active {
   transform: rotate(180deg);
 }
 
+/***/
+.steps-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.steps-table th,
+.steps-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.steps-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.steps-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.steps-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.final-answer {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f7f9fc;
+  border-left: 4px solid #6a11cb;
+}
+
+.final-answer strong {
+  font-size: 1.1em;
+}
