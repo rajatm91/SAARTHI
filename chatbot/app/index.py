@@ -10,10 +10,12 @@ html = """
 </head>
 
 <body>
-    <div class="container">
+
+    <!-- Main screen and Server messages -->
+    <div id="main-screen" class="container">
         <!-- Left part: User chat -->
         <div class="chat-container left">
-            <div class="title">SAARTHI: Smart AI Agent for Real-Time Handling & Insights</div>
+            <div class="title">SAARTHI: Smart AI Agent</div>
             <ul id="messages" class="messages"></ul>
             <div id="loading-indicator" style="display: none;">
                 <span>Agent is typing<span id="dots">...</span></span>
@@ -25,9 +27,13 @@ html = """
             </div>
         </div>
 
-        <!-- Right part: Server messages -->
+        <!-- Right part: Server messages and View Registry button -->
         <div class="chat-container right">
-            <div class="title">Server Messages</div>
+            <div class="header">
+                <div class="title">Server Messages</div>
+                <button class="registry-button" onclick="window.location.href='/chatbot/static/registry.html'">View
+                    Registry</button>
+            </div>
             <div id="server-messages" class="message-container"></div>
         </div>
     </div>
