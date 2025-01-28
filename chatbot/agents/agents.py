@@ -59,10 +59,9 @@ def on_connect(iostream: IOWebsockets) -> None:
         system_message="""You are an helpful AI assistant.
             You can help me with basic data analysis for different financial statements.
                - You will always answer using the tools provided. If tools are not available then politely mention your capbilities.
-               - Consider Rupee as the currency, so for expense unless specified mention it in Rupees. 
+               - Consider Rupee as the currency, so for expense unless specified mention it in Rupees.
                - For the charts, ensure that the chart path is returned with message
-               - Always return the response in structure format.
-            Return 'TERMINATE' when the task is done.
+           Return 'TERMINATE' when the task is done.
             """
 
     )
@@ -73,7 +72,7 @@ def on_connect(iostream: IOWebsockets) -> None:
         llm_config=False,
         human_input_mode="NEVER",
         code_execution_config={
-            "last_n_messages": 3,
+            "last_n_messages": 1,
             "work_dir": "tasks",
             "use_docker": False
         },
@@ -96,18 +95,19 @@ def on_connect(iostream: IOWebsockets) -> None:
 
         )
 
-    conclusion = AssistantAgent(
-        name="critic",
-        system_message="""You are reviewer of the responses, 
-            - Ensure to refine the answers without changing the context.
-            - Consider Rupee as the currency, so for expense unless specified mention it in Rupees.
-            - If there are no response from the agent, politely let them know the group's capability,
-            - Ensure that all details are captured and answer is precise but thorough and complete.
-            - For answers with images, ensure to send the file path of the image as well.
-            """,
-        llm_config=llm_config,
-        human_input_mode="NEVER",  # Never ask for human input.
-    )
+    # conclusion = AssistantAgent(
+    #     name="critic",
+    #     system_message="""You are reviewer of the responses,
+    #         - Ensure to refine the answers without changing the context.
+    #         - Consider Rupee as the currency, so for expense unless specified mention it in Rupees.
+    #         - If there are no response from the agent, politely let them know the group's capability,
+    #         - Ensure that all details are captured and answer is precise but thorough and complete.
+    #         - For answers with images, ensure to send the file path of the image as well.
+    #         Return 'TERMINATE' when the task is done.
+    #         """,
+    #     llm_config=llm_config,
+    #     human_input_mode="NEVER",  # Never ask for human input.
+    # )
 
     print(
         f" - on_connect(): Initiating chat with agent {data_analyst_assistant} using message '{initial_msg}"
@@ -120,11 +120,11 @@ def on_connect(iostream: IOWebsockets) -> None:
    #group_chat = GroupChat(agents=[user_proxy], messages=[], max_round=5)
    #manager = GroupChatManager(groupchat=group_chat, llm_config=llm_config)
 
-    group_chat = GroupChat(agents=[user_proxy, data_analyst_assistant, conclusion], messages=[])
-    manager = GroupChatManager(group_chat, llm_config=llm_config)
+    #group_chat = GroupChat(agents=[user_proxy, data_analyst_assistant], messages=[])
+    #manager = GroupChatManager(group_chat, llm_config=llm_config)
 
-    user_proxy.initiate_chat(manager,
-                             message=initial_msg, summary_method="reflection_with_llm")
+    user_proxy.initiate_chat(data_analyst_assistant,
+                             message=initial_msg, summary_method="last_msg")
 
     # pprint.pprint(user_proxy.chat_messages)
 
