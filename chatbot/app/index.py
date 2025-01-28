@@ -37,8 +37,8 @@ html = """
             <div id="server-messages" class="message-container"></div>
         </div>
     </div>
-
-    <script src="chatbot/static/script.js"></script>
+    
+    <script type="module" src="chatbot/static/script.js"></script>
 </body>
 
 </html>
