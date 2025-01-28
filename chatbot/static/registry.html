@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAARTHI: Tools and Agent Registry</title>
+    <link rel="stylesheet" href="chatbot/static/styles.css" />
+    <style>  
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        color: #333;
+      }
+
+      .content-page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;        
+      }
+
+      h2 {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 20px;
+        font-size: 28px;
+        padding: 12px;
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        border-radius: 16px;   
+      }
+
+      .registry-container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .registry-section {
+        flex: 1;
+        min-width: 300px;
+        /* background-color: #e9f5ff; */
+        background: linear-gradient(90deg, #44cf59, #adfc25);
+        border: 1px solid #d6e9ff;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .registry-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #2c7be5;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      ul li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      ul li strong {
+        color: #333;
+      }
+
+      .back-button {
+        display: block;
+        margin: 30px auto 0;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #4a90e2;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .back-button:hover {
+        background-color: #357ab7;
+        transform: translateY(-2px);
+      }
+
+      .back-button:active {
+        background-color: #2c5f8a;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Static Registry Page -->
+    <div id="static-page" class="content-page">
+      <h2>Tools and Agent Registry</h2>
+
+      <div class="registry-container">
+        <!-- Left Section: Tools Registry -->
+        <div class="registry-section">
+          <div class="registry-title">Tools Registry:</div>
+          <ul>
+            <li>
+              <strong>get_total_due:</strong> Calculates the total amount owed
+              by the user
+            </li>
+            <li>
+              <strong>get_total_credit_transaction:</strong> Calculates the
+              total amount refunded or credited in the statement
+            </li>
+            <li>
+              <strong>get_total_debit_transactions:</strong> Calculates the
+              total debit amount in the statement
+            </li>
+            <li>
+              <strong>get_total_transaction_for_month:</strong> Calculates the
+              total transaction value for a month aggregating the debit and
+              credit
+            </li>
+            <li>
+              <strong>aggregate_expenses:</strong> Aggregates the expenses based
+              on the groupby parameter
+            </li>
+            <li>
+              <strong>plot_chart:</strong> Plots a pie or bar chart depicting
+              the distribution of expenses based on either month or description
+              based on user's input
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Section: Agent Registry -->
+        <div class="registry-section">
+          <div class="registry-title">Agent Registry:</div>
+          <ul>
+            <li>
+              <strong>Data Analyst Agent:</strong> Agent to perform basic data
+              analysis for statements
+            </li>
+            <li>
+              <strong>Critic Agent:</strong> Analyze the User’s question and
+              Data Analyst Agent’s response and reform it accordingly
+            </li>
+            <li>
+              <strong>User Agent:</strong> Agent Manager interacting with User
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="chatbot/static/script.js"></script>
+  </body>
+</html>

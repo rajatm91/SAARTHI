@@ -28,12 +28,11 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 12px;
   border-right: 1px solid #dddddd;
 }
 
 /* Title */
-.title {
+.chat-container.left .title {
   background: linear-gradient(90deg, #6a11cb, #2575fc);
   color: white;
   text-align: center;
@@ -68,24 +67,26 @@ html {
 }
 .messages li.user {
   align-self: flex-end;
-  background: linear-gradient(90deg, #ff7e5f, #feb47b); 
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
   color: white;
-  padding: 10px 15px; 
-  border-radius: 20px; 
-  font-size: 14px; 
-  max-width: 70%; 
-  word-wrap: break-word; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  max-width: 70%;
+  word-wrap: break-word;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-right: 12px;
 }
 
 .messages li.agent {
   align-self: flex-start;
-  background: linear-gradient(90deg, #b6d0d9, #d6fff7); /* Gradient similar to #e0e7ff */
+  background: linear-gradient(90deg, #b6d0d9, #d6fff7);
   color: #333333;
   padding: 10px;
   border-radius: 8px;
   margin: 5px 0;
   max-width: 70%;
+  margin-left: 12px;
 }
 
 /* Input area */
@@ -110,7 +111,7 @@ html {
 
 /* Send button */
 button {
-  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  background: linear-gradient(90deg, #56ab2f, #a8e063);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -122,7 +123,7 @@ button {
 }
 
 button:hover {
-  background: linear-gradient(90deg, #5a0fb1, #2069d4);
+  background: linear-gradient(90deg, #3c9120, #8cc850);
   transform: scale(1.05);
 }
 
@@ -135,7 +136,7 @@ button:active {
 .chat-container.left {
   flex: 1;
   max-width: 60%;
-  padding: 10px;
+  /* padding: 10px; */
   border-right: 1px solid #ddd;
 }
 
@@ -199,17 +200,34 @@ button:active {
 }
 
 .chat-container.right .title {
-  background: linear-gradient(90deg, #6a11cb, #2575fc);
   color: white;
   text-align: center;
-  padding: 16px;
+  padding: 8px;
   font-size: 1.5em;
   font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 16px;
-  position: sticky;
-  top: 0; 
-  z-index: 1; 
+}
+
+.chat-container .registry-button {
+  background: linear-gradient(90deg, #cb1136, #fc2537);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 12px;
+}
+
+.chat-container .registry-button:hover {
+  background: linear-gradient(90deg, #cb1136, #fc2537);
+  transform: scale(1.05);
+}
+.chat-container .registry-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Message container */
@@ -413,8 +431,7 @@ button:active {
   border-top: 1px solid #ddd;
 }
 
-  
-  /* Accordion item */
+/* Accordion item */
 .accordion-item {
   border-bottom: 1px solid #ddd;
 }
@@ -424,7 +441,7 @@ button:active {
   padding: 12px 16px;
   font-size: 1em;
   font-weight: bold;
-  background: linear-gradient(90deg, #2dcb11, #1a9d07); /* Distinct green gradient */
+  background: linear-gradient(90deg, #2dcb11, #1a9d07);
   color: white;
   cursor: pointer;
   display: flex;
@@ -435,7 +452,7 @@ button:active {
 }
 
 .accordion-title:hover {
-  background: linear-gradient(90deg, #1a9d07, #2dcb11); /* Reverse gradient for hover */
+  background: linear-gradient(90deg, #1a9d07, #2dcb11);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
 
@@ -512,13 +529,114 @@ button:active {
   align-items: center;
   width: fit-content;
   animation: fadeIn 0.3s ease-in-out;
+  margin-left: 12px;
+  margin-bottom: 4px;
 }
 
 @keyframes fadeIn {
   from {
-      opacity: 0;
+    opacity: 0;
   }
   to {
-      opacity: 1;
+    opacity: 1;
   }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 4px;
+  background: linear-gradient(90deg, #2575fc, #6a11cb);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.header .title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+}
+
+/* Static Page Styling */
+#static-page {
+  display: none;
+  padding: 20px;
+  background-color: #fff;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.registry-section {
+  margin: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.registry-title {
+  font-size: 22px;
+  color: #2a2a2a;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+li strong {
+  color: #333;
+}
+
+.registry-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.registry-container .registry-section {
+  flex: 1;
+  min-width: 45%;
+}
+
+.back-button {
+  display: block;
+  width: 200px;
+  margin: 30px auto 0;
+  padding: 10px;
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.message-margin {
+  margin-left: 20px;
 }
