@@ -80,8 +80,12 @@ html {
 
 .messages li.agent {
   align-self: flex-start;
-  background: #e0e7ff;
+  background: linear-gradient(90deg, #b6d0d9, #d6fff7); /* Gradient similar to #e0e7ff */
   color: #333333;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 5px 0;
+  max-width: 70%;
 }
 
 /* Input area */
@@ -409,13 +413,6 @@ button:active {
   border-top: 1px solid #ddd;
 }
 
-/* .accordion {
-    width: 100%;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background: #f9f9f9;
-  }
   
   /* Accordion item */
 .accordion-item {
@@ -502,4 +499,26 @@ button:active {
 
 .final-answer strong {
   font-size: 1.1em;
+}
+#loading-indicator {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #ffc25f, #fef77b);
+  color: black;
+  font-style: italic;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }
