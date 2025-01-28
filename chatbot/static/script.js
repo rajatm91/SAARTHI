@@ -19,56 +19,65 @@ function connectWebSocket() {
 }
 
 function handleMessage(data) {
-  addServerMessage(JSON.stringify(data));
-  if (
-    data &&
-    data?.type !== "tool_response" &&
-    data.content &&
-    data.content.content
-  ) {
-    const messageContent = data.content.content.trim();
-    const imagePath = extractImagePath(data.content.content);
-    const finalAnswer =
-      parseConcatenatedJSON(data?.content?.content)?.[0]?.final_answer || null;
-    if (messageContent.includes("|") && messageContent.includes("---")) {
-      addNewTableMessage(messageContent, "agent");
-    } else if (
-      messageContent.includes(
-        "The total spend across different categories is as follows:"
-      )
+  toggleLoadingIndicator(true);
+  setTimeout(() => {
+    addServerMessage(JSON.stringify(data));
+    if (
+      data &&
+      data?.type !== "tool_response" &&
+      data.content &&
+      data.content.content
     ) {
-      const tableData = extractKeyValueFromList(messageContent);
-      addListBasedTableMessage(tableData, "agent");
-    } else if (messageContent.includes("Here is the analysis")) {
-      // Extract and format the table data
-      const rows = messageContent
-        .split("\n")
-        .filter((line) => line.includes(":")) // Filter lines with data
-        .map((line) => {
-          const [key, value] = line.split(":");
-          return { key: key.trim(), value: value.trim() };
-        });
+      const messageContent = data.content.content.trim();
+      const imagePath = extractImagePath(data.content.content);
+      const finalAnswer =
+        parseConcatenatedJSON(data?.content?.content)?.[0]?.final_answer ||
+        null;
+      if (messageContent.includes("|") && messageContent.includes("---")) {
+        addNewTableMessage(messageContent, "agent");
+      } else if (
+        messageContent.includes(
+          "The total spend across different categories is as follows:"
+        )
+      ) {
+        const tableData = extractKeyValueFromList(messageContent);
+        addListBasedTableMessage(tableData, "agent");
+      } else if (messageContent.includes("Here is the analysis")) {
+        // Extract and format the table data
+        const rows = messageContent
+          .split("\n")
+          .filter((line) => line.includes(":")) // Filter lines with data
+          .map((line) => {
+            const [key, value] = line.split(":");
+            return { key: key.trim(), value: value.trim() };
+          });
 
-      // Display the data in tabular format
-      addTableMessage(rows);
-    } else if (imagePath) {
-      // If image path is present, display the image in the chat
-      addImageMessage(imagePath);
-    } else if (
-      messageContent &&
-      messageContent !== "TERMINATE" &&
-      typeof messageContent === "string" &&
-      !isJsonObject(messageContent) &&
-      finalAnswer
-    ) {
-      addMessage(finalAnswer, "agent");
-    } else if (messageContent && data?.content?.sender_name !== "user_proxy") {
-      addMessage(messageContent, "agent");
-    } else {
-      console.log("Invalid or terminate message:", messageContent);
+        // Display the data in tabular format
+        addTableMessage(rows);
+      } else if (imagePath) {
+        // If image path is present, display the image in the chat
+        addImageMessage(imagePath);
+      } else if (
+        messageContent &&
+        messageContent !== "TERMINATE" &&
+        typeof messageContent === "string" &&
+        !isJsonObject(messageContent) &&
+        finalAnswer
+      ) {
+        addMessage(finalAnswer, "agent");
+      } else if (
+        messageContent &&
+        data?.content?.sender_name !== "user_proxy"
+      ) {
+        addMessage(messageContent, "agent");
+      } else {
+        console.log("Invalid or terminate message:", messageContent);
+      }
     }
-  }
+    toggleLoadingIndicator(false);
+  }, [2000]);
 }
+
 function addListBasedTableMessage(data, sender) {
   const container = document.getElementById("messages");
   const messageElement = document.createElement("li");
@@ -315,6 +324,29 @@ function addServerMessage(messageContent) {
     const messageBox = document.createElement("div");
     messageBox.classList.add("message-box");
 
+    // Set background color based on message type
+    const messageType = parsedData.type;
+    switch (messageType) {
+      case "group_chat_run_chat":
+        messageBox.style.background = "linear-gradient(90deg, #a8c0ff, #3f2b96)";
+        break;
+      case "text":
+        messageBox.style.background = "linear-gradient(90deg, #fbc2eb, #a6c1ee)";
+        break;
+      case "tool_call":
+        messageBox.style.background = "linear-gradient(90deg, #ffb347, #ffcc33)"; 
+        break;
+      case "execute_function":
+        messageBox.style.background = "linear-gradient(90deg, #ff6a00, #ee0979)"; 
+        break;
+      case "tool_response":
+        messageBox.style.background = "linear-gradient(90deg, #e2a8f3, #9b59b6)";
+        break;
+      default:
+        messageBox.style.background = "#e6e6e6"; // Default
+        break;
+    }
+
     // Recursive function to handle nested data
     const createKeyValueDiv = (key, value) => {
       const keyValueDiv = document.createElement("div");
@@ -451,13 +483,9 @@ function addServerMessage(messageContent) {
       serverMessagesContainer.appendChild(connector);
     }
   });
-
-  // Scroll to the bottom to show the latest messages
-  // setTimeout(() => {
-  //   serverMessagesContainer.scrollTop = serverMessagesContainer.scrollHeight;
-  // }, 0);
   scrollToBottom();
 }
+
 
 function parseMessage(message) {
   try {
@@ -571,5 +599,25 @@ function addTableMessage(rows) {
     messages.appendChild(newMessage);
   } else {
     console.error("Messages container not found!");
+  }
+}
+let dotsInterval;
+
+function toggleLoadingIndicator(show) {
+  const loadingIndicator = document.getElementById("loading-indicator");
+  const dots = document.getElementById("dots");
+
+  if (show) {
+    loadingIndicator.style.display = "block";
+
+    let dotsCount = 0;
+    dotsInterval = setInterval(() => {
+      dotsCount = (dotsCount + 1) % 4;
+      dots.textContent = ".".repeat(dotsCount);
+    }, 500);
+  } else {
+    loadingIndicator.style.display = "none";
+
+    clearInterval(dotsInterval);
   }
 }
