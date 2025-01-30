@@ -1,0 +1,90 @@
+transaction_date,narration,type,amount,closing_balance
+2024-08-01,Opening Balance,credit,50000,50000
+2024-08-02,Zomato,debit,250,49750
+2024-08-02,Swiggy Instamart,debit,250,49500
+2024-08-06,Airtel Broadband,debit,1886,47614
+2024-08-06,Vodafone,debit,750,46864
+2024-08-07,Salary,credit,75000,121864
+2024-08-11,Acct Trf - Ravi Kumar,debit,3500,118364
+2024-08-14,Mutual Fund SIP,debit,1500,116864
+2024-08-08,Rent,debit,20000,96864
+2024-08-22,Blinkit,debit,560,96304
+2024-08-22,Global Kirana Store,debit,4765,91539
+2024-08-25,Croma Pvt Ltd,debit,5012,86527
+2024-08-29,Blinkit,debit,351,86176
+2024-08-13,BESCOM,debit,1926,84250
+2024-08-31,Blinkit,debit,250,84000
+2024-09-02,Mutual Fund SIP,debit,1500,82500
+2024-09-08,Rent,debit,20000,62500
+2024-09-02,Salary,credit,75000,137500
+2024-09-05,OneMg ,debit,2064,135436
+2024-09-10,Airtel Broadband,debit,1886,133550
+2024-09-11,Myntra,debit,8841,124709
+2024-09-12,BESCOM,debit,1794,122915
+2024-09-15,Global Kirana Store,debit,3171,119744
+2024-09-15,Blinkit,debit,1803,117941
+2024-09-20,Vodafone,debit,750,117191
+2024-09-21,Blinkit,debit,750,116441
+2024-09-24,Reliance Digital Ltd,debit,13393,103048
+2024-09-25,MakemyTrip,debit,3285,99763
+2024-09-26,Myntra,debit,3230,96533
+2024-09-27,Blinkit,debit,360,96173
+2024-10-03,Vodafone,debit,750,95423
+2024-10-05,Global Kirana Store,debit,2382,93041
+2024-10-08,Zomato ,debit,1269,91772
+2024-10-09,Blinkit,debit,560,91212
+2024-10-10,BESCOM,debit,1934,89278
+2024-10-12,Amazon.com,debit,8270,81008
+2024-10-13,Blinkit,debit,560,80448
+2024-10-13,Global Kirana Store,debit,1500,78948
+2024-10-18,Airtel Broadband,debit,648,78300
+2024-10-23,Makemytrip,debit,8456,69844
+2024-10-10,Mutual Fund SIP,debit,1500,68344
+2024-10-06,Rent,debit,20000,48344
+2024-10-25,Salary,credit,75000,123344
+2024-10-26,Makemytrip,debit,4481,118863
+2024-11-02,Blinkit,debit,3562,115301
+2024-11-05,Swiggy Instamart,debit,3650,111651
+2024-11-07,Airtel Broadband,debit,1937,109714
+2024-11-07,Vodafone,debit,763,108951
+2024-11-08,Tata CLiq,debit,9788,99163
+2024-11-11,BESCOM,debit,2364,96799
+2024-11-15,Acct Trf - Shatrughan,debit,5887,90912
+2024-11-16,MakemyTrip,debit,8751,82161
+2024-11-17,OneMg ,debit,6835,75326
+2024-11-18,Pai Electronic Ltd,debit,9626,65700
+2024-11-21,Blinkit,debit,3093,62607
+2024-11-07,Rent,debit,20000,42607
+2024-11-22,Salary,credit,75000,117607
+2024-11-09,Mutual Fund SIP,debit,1500,116107
+2024-11-28,Blinkit,debit,3093,113014
+2024-12-02,Blinkit,debit,2752,110262
+2024-12-06,BESCOM,debit,1848,108414
+2024-12-06,Airtel Broadband,debit,565,107849
+2024-12-08,Acct Trf - Ramesh Sinha,debit,1953,105896
+2024-12-10,Swiggy Dineout,debit,19294,86602
+2024-12-11,Vodafone,debit,1692,84910
+2024-12-10,Mutual Fund SIP,debit,1500,83410
+2024-12-08,Rent,debit,20000,63410
+2024-12-13,Myntra,debit,10053,53357
+2024-12-16,Swiggy Instamart,debit,3405,49952
+2024-12-17,OneMg ,debit,17459,32493
+2024-12-21,Swiggy Instamart,debit,2808,29685
+2024-12-21,Swiggy Instamart,debit,3323,26362
+2024-12-25,Salary,credit,75000,101362
+2024-12-27,Swiggy Dineout,debit,3006,98356
+2024-12-30,Swiggy Instamart,debit,2626,95730
+2025-01-03,Airtel Broadband,debit,653,95077
+2025-01-03,Vodafone,debit,508,94569
+2025-01-09,Mutual Fund SIP,debit,1500,93069
+2025-01-08,Rent,debit,20000,73069
+2025-01-06,BESCOM,debit,2449,70620
+2025-01-11,Amazon.com,debit,10071,60549
+2025-01-17,Salary,credit,75000,135549
+2025-01-18,Amazon.com,debit,1663,133886
+2025-01-18,Amazon.com,debit,3747,130139
+2025-01-21,Croma Pvt Ltd,debit,5047,125092
+2025-01-25,Myntra,debit,14357,110735
+2025-01-26,Acct Trf - Ramesh Sinha,debit,7539,103196
+2025-01-26,MakemyTrip,debit,6960,96236
+2025-01-27,Blinkit,debit,2086,94150

@@ -14,8 +14,7 @@ file_path = pathlib.Path(__file__).parents[2] / "data" / "credit_card_transactio
 image_path = pathlib.Path(__file__).parents[1] / "static" / "images"
 # Load data
 df = pd.read_csv(file_path)
-region_name = "ap-south-1"
-client = boto3.client("s3", region_name=region_name)
+
 
 
 
@@ -28,19 +27,19 @@ def get_month_number(month_name: str) -> int:
     return month_number
 
 
-def get_transaction_value(df: pd.DataFrame, transaction_type: Literal["debit","credit", "all" ] = "all" ,
-                          col: str = "transaction_amount") -> float:
+def get_transaction_value(df: pd.DataFrame, transaction_type: Literal["debit","credit", "all" ] = "all",
+                          amount: str = "transaction_amount") -> float:
     match transaction_type:
         case "debit":
-            d_transaction = df[df[col] > 0]
-            return round(d_transaction[col].sum(),4)
+            d_transaction = df[df[amount] > 0]
+            return round(d_transaction[amount].sum(), 4)
         case "credit":
-            c_transaction = df[df[col] < 0]
-            return round(c_transaction[col].sum(), 4)
+            c_transaction = df[df[amount] < 0]
+            return round(c_transaction[amount].sum(), 4)
         case "all":
-            return round(df[col].sum(), 4)
+            return round(df[amount].sum(), 4)
 
-    return round(df[col].sum(), 4)
+    return round(df[amount].sum(), 4)
 
 def get_total_debit_transactions() -> float:
     return get_transaction_value(df, "debit")
@@ -54,7 +53,7 @@ def get_total_credit_transaction() -> float:
     return get_transaction_value(df, "credit")
 
 
-def get_total_transaction_for_month(month: Annotated[str, "Month for transaction value to be calculate"],
+def get_closing_balance_for_month(month: Annotated[str, "Month for transaction value to be calculate"],
                                     transaction_type: Annotated[Literal["credit", "debit","net"],
                                     "specify the type of transaction on which aggregation needs to be done"]) -> float:
     month_number = get_month_number(month)
@@ -111,7 +110,3 @@ def plot_chart(group_by: Annotated[Literal["description", "month"], "Group by ca
     return {"image": file_path}
 
 
-def upload_image_s3(bucket: str, image_path: str, image_name: str, region: str):
-    key = f"charts/{image_name}"
-    client.upload_file(image_path, bucket, key )
-    return f"https://{bucket}.s3.{region}.amazonaws.com/{key}"

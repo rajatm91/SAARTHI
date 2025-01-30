@@ -4,14 +4,35 @@ from autogen import UserProxyAgent, AssistantAgent, register_function, GroupChat
 from autogen.io import IOWebsockets
 from pydantic import BaseModel
 
-from agents.tools import (
-    get_total_due,
+# from agents.tools import (
+#     get_total_due,
+#     get_total_credit_transaction,
+#     get_total_transaction_for_month,
+#     aggregate_expenses,
+#     plot_chart,
+#     get_total_debit_transactions,
+# )
+
+from agents.account_statement_tools import (
     get_total_credit_transaction,
     get_total_transaction_for_month,
-    aggregate_expenses,
-    plot_chart,
+    get_closing_balance,
+    aggregate_transactions,
+    plot_chart_narration, plot_chart_categories, plot_chart_month,
     get_total_debit_transactions,
+    get_recurring_expenses
 )
+
+function_description_map = {
+    "get_closing_balance": "Calculates the closing balance a.k.a. net amount in the bank acount ",
+    "get_total_credit_transaction": "Calculates the total amount refunded or credited in the statement",
+    "get_total_transaction_for_month": "Calculates the total transaction value for a month. Aggregation is done based on user's input. Like `credit` would sum all credit transactions, `debit` would sum debit transactions and `net` would sum both.",
+    "aggregate_transactions": "Aggregates the expenses based on the groupby parameter",
+    "plot_chart_categories": "Plots a pie or bar chart depicting the distribution of transactions based on category",
+    "plot_chart_narration": "Plots a pie or bar chart depicting the distribution of transactions based on narration of a particular category",
+    "plot_chart_month": "Plots a pie or bar chart depicting the distribution of transactions based on month",
+    "get_recurring_expenses": "Identifies the merchant where we have a recurring expense, basically transactions happening every month"
+}
 
 from dotenv import load_dotenv
 import os
@@ -38,13 +59,7 @@ llm_config = {
 
 }
 
-function_description_map = {
-    "get_total_due": "Calculates the total amount owed by the user",
-    "get_total_credit_transaction": "Calculates the total amount refunded or credited in the statement",
-    "get_total_transaction_for_month": "Calculates the total transaction value for a month aggregating the debit and credit",
-    "aggregate_expenses": "Aggregates the expenses based on the groupby parameter",
-    "plot_chart": "Plots a pie or bar chart depicting the distribution of expenses based on either month or description based on user's input",
-}
+
 
 
 def on_connect(iostream: IOWebsockets) -> None:
@@ -70,9 +85,10 @@ def on_connect(iostream: IOWebsockets) -> None:
     user_proxy = UserProxyAgent(
         name="user_proxy",
         llm_config=False,
+        max_consecutive_auto_reply=1,
         human_input_mode="NEVER",
         code_execution_config={
-            "last_n_messages": 1,
+            "last_n_messages": 3,
             "work_dir": "tasks",
             "use_docker": False
         },
@@ -80,12 +96,16 @@ def on_connect(iostream: IOWebsockets) -> None:
         is_termination_msg=lambda msg: msg.get("content") is not None and "TERMINATE" in msg["content"],
     )
 
-    tools = [get_total_due, get_total_credit_transaction,  get_total_transaction_for_month, aggregate_expenses,
-             plot_chart, get_total_debit_transactions]
+    # tools = [get_total_due, get_total_credit_transaction,  get_total_transaction_for_month, aggregate_expenses,
+    #          plot_chart, get_total_debit_transactions]
+
+    bank_statement_tools = [get_closing_balance, get_total_credit_transaction, get_total_transaction_for_month,
+                            aggregate_transactions,plot_chart_narration, plot_chart_month, plot_chart_categories,
+                            get_recurring_expenses, get_total_debit_transactions]
 
 
 
-    for tool in tools:
+    for tool in bank_statement_tools:
         register_function(
             tool,
             caller=data_analyst_assistant,
@@ -123,8 +143,10 @@ def on_connect(iostream: IOWebsockets) -> None:
     #group_chat = GroupChat(agents=[user_proxy, data_analyst_assistant], messages=[])
     #manager = GroupChatManager(group_chat, llm_config=llm_config)
 
+    initial_msg = "Assuming today is 28th Jan 2025. " + initial_msg
+
     user_proxy.initiate_chat(data_analyst_assistant,
-                             message=initial_msg, summary_method="last_msg")
+                             message=initial_msg, summary_method="reflection_with_llm", max_turns=10)
 
     # pprint.pprint(user_proxy.chat_messages)
 
