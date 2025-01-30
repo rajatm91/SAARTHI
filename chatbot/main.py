@@ -3,7 +3,7 @@ from app.api import app
 import uvicorn
 
 async def main():
-    config = uvicorn.Config(app)
+    config = uvicorn.Config(app, port=80)
     server = uvicorn.Server(config)
     await server.serve()
 
